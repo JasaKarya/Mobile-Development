@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Jasa Karya</string>
+    <string name="imageview_login">Image Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="icon_username">Icon Username</string>
+    <string name="ib_back">Button Back</string>
+    <string name="icon_password">Icon Password</string>
 </resources>
