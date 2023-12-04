@@ -13,19 +13,16 @@
         android:theme="@style/Theme.JasaKarya"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.SplashActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.auth.register.SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".WelcomeActivity1"
             android:exported="false" />
         <activity
             android:name=".ui.auth.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

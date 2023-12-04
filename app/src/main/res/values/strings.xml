@@ -8,4 +8,22 @@
     <string name="icon_username">Icon Username</string>
     <string name="ib_back">Button Back</string>
     <string name="icon_password">Icon Password</string>
+
+    <string name="skip">SKIP</string>
+    <string name="get_started">GET STARTED</string>
+
+    <string name="jasakarya">Jasa Karya</string>
+    <string name="logo_jasakarya">Logo Jasa Karya</string>
+
+    <string name="image_kreativitas">Image Kreativitas</string>
+    <string name="image_branding">Image Branding</string>
+    <string name="image_community">Image Community</string>
+
+    <string name="title_menu_1">Kreativitas</string>
+    <string name="title_menu_2">Branding</string>
+    <string name="title_menu_3">Community</string>
+
+    <string name="desc_menu_1">Tunjukkan kreativitasmu kepada dunia. Dapatkan dukungan dari kolektor design dan bangun reputasi sebagai kreator handal.</string>
+    <string name="desc_menu_2">Jual karya kreatifmu di sini dan biarkan dunia menikmati keunikanmu! Bergabunglah sekarang untuk membuka peluang baru di dunia kreativitas.</string>
+    <string name="desc_menu_3">Temukan komunitas kreatif di sini! Bergabunglah bersama desainer dari berbagai latar belakang untuk berbagi ide, inspirasi, dan dukungan. Jelajahi kreativitas bersama kami.</string>
 </resources>
