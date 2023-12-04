@@ -1,10 +1,11 @@
-package com.jasakarya
+package com.jasakarya.ui.auth.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
+import com.jasakarya.R
 import com.jasakarya.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
