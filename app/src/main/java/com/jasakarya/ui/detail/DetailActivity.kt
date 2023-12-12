@@ -1,4 +1,4 @@
-package com.jasakarya
+package com.jasakarya.ui.detail
 
 import android.animation.LayoutTransition
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +13,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.bold
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jasakarya.R
+import com.jasakarya.data.model.Profile
 import com.jasakarya.databinding.ActivityDetailBinding
+import com.jasakarya.ui.profile.ProfileAdapter
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding

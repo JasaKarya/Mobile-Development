@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.payment.PaymentActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ib_back"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/ib_back"
+        app:icon="@drawable/arrow_left"
+        app:iconTint="#279EFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:text="@string/tv_payment"
+        android:textColor="#279EFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ib_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ib_back" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/iconButton"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:icon="@drawable/ic_shopping_cart"
+        app:iconTint="#279EFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view_user"
+        android:layout_width="345dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="34dp"
+        android:backgroundTint="#14255D"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_payment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_product"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="16dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_product"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:backgroundTint="@color/black"
+                    android:contentDescription="@string/iv_product"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_12" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/name_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/name_product"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/cv_product"
+                app:layout_constraintTop_toTopOf="@id/cv_product" />
+
+            <TextView
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/tv_category"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/cv_product"
+                app:layout_constraintTop_toBottomOf="@id/name_product" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/tv_price"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/cv_product"
+                app:layout_constraintTop_toBottomOf="@id/tv_category" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_check"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#34A853"
+                android:contentDescription="@string/btn_check"
+                app:icon="@drawable/ic_check"
+                app:iconTint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_detail_pemesanan"
+        android:layout_width="345dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_user"
+        app:strokeColor="#081639"
+        app:strokeWidth="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_detail_pemesanan"
+                android:layout_width="148dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/tv_detail_pemesanan"
+                android:textColor="#081639"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_icon_status"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_detailpayment"
+                android:contentDescription="@string/ic_status"
+                android:padding="12dp"
+                android:src="@drawable/ic_status"
+                app:layout_constraintStart_toStartOf="@id/tv_detail_pemesanan"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_pemesanan"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="45dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/tv_status"
+                android:textColor="#081639"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/iv_icon_status"
+                app:layout_constraintTop_toTopOf="@id/iv_icon_status" />
+
+            <TextView
+                android:id="@+id/tv_Ongoing"
+                android:layout_width="65dp"
+                android:layout_height="21dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/tv_ongoing"
+                android:textColor="#081639"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_icon_status"
+                app:layout_constraintStart_toStartOf="@id/tv_status" />
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="30dp"-->
+            <!--                android:layout_height="30dp"-->
+            <!--                android:orientation="vertical"-->
+            <!--                app:layout_constraintEnd_toEndOf="@id/iv_icon_status"-->
+            <!--                app:layout_constraintStart_toStartOf="@id/iv_icon_status"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/iv_icon_status">-->
+
+            <!--                <View-->
+            <!--                    android:layout_width="30dp"-->
+            <!--                    android:layout_height="30dp"-->
+            <!--                    android:background="@drawable/line_detailpemesanan" />-->
+            <!--            </LinearLayout>-->
+
+            <ImageView
+                android:id="@+id/line"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:contentDescription="@string/ic_line"
+                android:src="@drawable/line_1"
+                app:layout_constraintEnd_toEndOf="@id/iv_icon_status"
+                app:layout_constraintStart_toStartOf="@id/iv_icon_status"
+                app:layout_constraintTop_toBottomOf="@id/iv_icon_status"
+                app:tint="#081639" />
+
+            <ImageView
+                android:id="@+id/iv_icon_estimasi"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_detailpayment"
+                android:contentDescription="@string/ic_estimasi"
+                android:padding="10dp"
+                android:src="@drawable/ic_shipping"
+                app:layout_constraintEnd_toEndOf="@id/iv_icon_status"
+                app:layout_constraintStart_toStartOf="@id/iv_icon_status"
+                app:layout_constraintTop_toBottomOf="@id/line"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tv_estimasi"
+                android:layout_width="55dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/tv_estimasi"
+                android:textColor="#081639"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/iv_icon_estimasi"
+                app:layout_constraintTop_toTopOf="@id/iv_icon_estimasi" />
+
+            <TextView
+                android:id="@+id/tv_hari"
+                android:layout_width="41dp"
+                android:layout_height="21dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/tv_hari"
+                android:textColor="#081639"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_icon_estimasi"
+                app:layout_constraintStart_toStartOf="@id/tv_estimasi" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="345dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_detail_pemesanan"
+        app:strokeColor="#081639"
+        app:strokeWidth="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_detail_pembayaran"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/tv_detail_pembayaran"
+                android:textColor="#081639"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_jml_barang"
+                android:layout_width="95dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/jumlah_barang"
+                android:textColor="#081639"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_pembayaran"
+                app:layout_constraintStart_toStartOf="@+id/tv_detail_pembayaran" />
+
+            <TextView
+                android:id="@+id/tv_barang"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/tv_barang"
+                android:textColor="#081639"
+                android:textSize="12sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_jml_barang"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_jml_barang" />
+
+            <TextView
+                android:id="@+id/tv_harga"
+                android:layout_width="38dp"
+                android:layout_height="18dp"
+                android:text="@string/tv_harga"
+                android:textColor="#081639"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_jml_barang"
+                app:layout_constraintStart_toStartOf="@+id/tv_jml_barang" />
+
+            <TextView
+                android:id="@+id/tv_harga_barang"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/tv_price"
+                android:textColor="#081639"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_harga"
+                app:layout_constraintEnd_toEndOf="@id/tv_barang"
+                app:layout_constraintTop_toTopOf="@+id/tv_harga" />
+
+            <TextView
+                android:id="@+id/tv_diskon"
+                android:layout_width="40dp"
+                android:layout_height="18dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/tv_disk"
+                android:textColor="#081639"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="@+id/tv_harga"
+                app:layout_constraintTop_toBottomOf="@+id/tv_harga" />
+
+            <TextView
+                android:id="@+id/tv_diskon_barang"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/tv_diskon"
+                android:textColor="#081639"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_diskon"
+                app:layout_constraintEnd_toEndOf="@id/tv_harga_barang"
+                app:layout_constraintTop_toTopOf="@+id/tv_diskon" />
+
+            <View
+                android:id="@+id/line_detailpembayaran"
+                android:layout_width="308dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#081639"
+                android:background="@drawable/line_detailpemesanan"
+                app:layout_constraintEnd_toEndOf="@+id/tv_diskon_barang"
+                app:layout_constraintStart_toStartOf="@+id/tv_diskon"
+                app:layout_constraintTop_toBottomOf="@+id/tv_diskon" />
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="36dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/tv_total"
+                android:textColor="#081639"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/line_detailpembayaran"
+                app:layout_constraintTop_toBottomOf="@+id/line_detailpembayaran" />
+            
+            <TextView
+                android:layout_width="94dp"
+                android:layout_height="20dp"
+                android:text="@string/tv_price"
+                android:textColor="#081639"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_total"
+                app:layout_constraintTop_toTopOf="@id/tv_total"
+                app:layout_constraintEnd_toEndOf="@id/line_detailpembayaran" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#279EFF"
+        android:fontFamily="@font/ubuntu_medium"
+        android:text="@string/btn_pay"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,12 @@
-package com.jasakarya
+package com.jasakarya.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jasakarya.HomeAdapter.MyViewHolder.Companion.DIFF_CALLBACK
+import com.jasakarya.ui.home.HomeAdapter.MyViewHolder.Companion.DIFF_CALLBACK
+import com.jasakarya.data.model.Home
 import com.jasakarya.databinding.ItemRowServiceBinding
 
 class HomeAdapter (
