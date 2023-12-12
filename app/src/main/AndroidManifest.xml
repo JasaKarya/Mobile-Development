@@ -21,11 +21,14 @@
         <activity
             android:name=".ui.auth.register.SignUpActivity"
             android:exported="false" />
-        <activity
+          <activity
             android:name=".ui.auth.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

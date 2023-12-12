@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:textSize="24sp"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textAlignment="center"
         android:backgroundTint="@null"
         android:textStyle="bold"
@@ -129,7 +129,7 @@
         style="@style/Widget.Design.TextInputLayout"
         app:boxBackgroundMode="none"
         android:hint="Password"
-        app:layout_constraintStart_toEndOf="@id/iv_email"
+        app:layout_constraintStart_toEndOf="@id/iv_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tfLayout_email">
 
