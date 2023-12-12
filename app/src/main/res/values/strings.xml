@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Jasa Karya</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="text_choose_package">Pilih Paket yang diinginkan :</string>
+    <string name="detail_description">Temukan gaya unik dan kreativitas dalam desain kaos kami yang penuh ilustrasi memikat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="bullet_span_text">Desain Kaos Ilustrasi Kustom (3 Desain) Tiga revisi desain Pengiriman format digital high resolution Bonus: Sesi konsultasi desain selama 1 jam Diskon 10% untuk pembelian desain tambahan</string>
 </resources>
