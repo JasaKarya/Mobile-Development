@@ -1,4 +1,4 @@
-package com.jasakarya
+package com.jasakarya.ui.auth.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
+import com.jasakarya.R
 import com.jasakarya.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
