@@ -1,4 +1,4 @@
-package com.jasakarya.ui.activity
+package com.jasakarya.ui.auth.splash
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.jasakarya.R
 import com.jasakarya.databinding.ActivitySplashBinding
 
 @SuppressLint("CustomSplashScreen")

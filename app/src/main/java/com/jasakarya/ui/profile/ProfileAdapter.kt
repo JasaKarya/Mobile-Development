@@ -1,4 +1,4 @@
-package com.jasakarya
+package com.jasakarya.ui.profile
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,7 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jasakarya.ProfileAdapter.MyViewHolder.Companion.DIFF_CALLBACK
+import com.jasakarya.R
+import com.jasakarya.ui.profile.ProfileAdapter.MyViewHolder.Companion.DIFF_CALLBACK
+import com.jasakarya.data.model.Profile
 import com.jasakarya.databinding.ItemStackedProfileBinding
 
 class ProfileAdapter(private val onClick: (Profile) -> Unit

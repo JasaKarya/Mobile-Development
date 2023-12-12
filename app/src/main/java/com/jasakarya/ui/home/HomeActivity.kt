@@ -1,11 +1,11 @@
-package com.jasakarya
+package com.jasakarya.ui.home
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.jasakarya.data.model.Home
+import com.jasakarya.R
 import com.jasakarya.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

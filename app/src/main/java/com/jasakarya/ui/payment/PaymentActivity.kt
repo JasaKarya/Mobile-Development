@@ -1,12 +1,12 @@
-package com.jasakarya.ui.activity
+package com.jasakarya.ui.payment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.jasakarya.R
 
-class CartActivity : AppCompatActivity() {
+class PaymentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cart)
+        setContentView(R.layout.activity_payment)
     }
 }

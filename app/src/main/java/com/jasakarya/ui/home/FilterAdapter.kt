@@ -1,4 +1,4 @@
-package com.jasakarya
+package com.jasakarya.ui.home
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 
 import androidx.recyclerview.widget.RecyclerView
-import com.jasakarya.FilterAdapter.MyViewHolder.Companion.DIFF_CALLBACK
+import com.jasakarya.R
+import com.jasakarya.ui.home.FilterAdapter.MyViewHolder.Companion.DIFF_CALLBACK
 import com.jasakarya.databinding.ItemRowFilterBinding
 
 class FilterAdapter(

@@ -1,4 +1,4 @@
-package com.jasakarya
+package com.jasakarya.data.model
 
 data class Home(
     val title: String,
