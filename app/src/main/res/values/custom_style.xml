@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CornerCut">
+        <item name="cornerSize">4%</item>
+    </style>
+
+</resources>
