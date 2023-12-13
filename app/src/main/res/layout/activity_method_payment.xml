@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Elevated"
         android:id="@+id/cv_metode_pembayaran"
         android:layout_width="350dp"
         android:layout_height="123dp"
@@ -51,6 +52,7 @@
                     android:id="@+id/iv_gopay"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:padding="10dp"
                     android:contentDescription="@string/iv_gopay"
                     android:src="@drawable/gopay" />
             </androidx.cardview.widget.CardView>
@@ -71,7 +73,7 @@
                     android:id="@+id/iv_atmbersama"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:contentDescription="@string/iv_atmbersama"
                     android:src="@drawable/atm_bersama" />
             </androidx.cardview.widget.CardView>
@@ -93,7 +95,7 @@
                     android:id="@+id/iv_linkaja"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:contentDescription="@string/iv_linkaja"
                     android:src="@drawable/linkaja" />
             </androidx.cardview.widget.CardView>
@@ -104,7 +106,7 @@
                 android:layout_height="42dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="12dp"
-                android:backgroundTint="#01C936"
+                android:backgroundTint="@color/white"
                 app:cardCornerRadius="11dp"
                 app:cardElevation="12dp"
                 app:layout_constraintStart_toEndOf="@id/cv_atmbersama"
@@ -114,7 +116,7 @@
                     android:id="@+id/iv_dana"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:contentDescription="@string/iv_dana"
                     android:src="@drawable/dana" />
             </androidx.cardview.widget.CardView>
@@ -124,11 +126,11 @@
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="@string/btn_buat_pesanan"
+        android:text="@string/btn_pay"
         android:fontFamily="@font/ubuntu_medium"
         android:textColor="@color/white"
         android:backgroundTint="#279EFF"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:textSize="17sp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
