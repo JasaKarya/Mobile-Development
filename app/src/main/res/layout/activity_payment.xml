@@ -199,20 +199,6 @@
                 app:layout_constraintBottom_toBottomOf="@id/iv_icon_status"
                 app:layout_constraintStart_toStartOf="@id/tv_status" />
 
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="30dp"-->
-            <!--                android:layout_height="30dp"-->
-            <!--                android:orientation="vertical"-->
-            <!--                app:layout_constraintEnd_toEndOf="@id/iv_icon_status"-->
-            <!--                app:layout_constraintStart_toStartOf="@id/iv_icon_status"-->
-            <!--                app:layout_constraintTop_toBottomOf="@id/iv_icon_status">-->
-
-            <!--                <View-->
-            <!--                    android:layout_width="30dp"-->
-            <!--                    android:layout_height="30dp"-->
-            <!--                    android:background="@drawable/line_detailpemesanan" />-->
-            <!--            </LinearLayout>-->
-
             <ImageView
                 android:id="@+id/line"
                 android:layout_width="40dp"
@@ -259,7 +245,6 @@
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/iv_icon_estimasi"
                 app:layout_constraintStart_toStartOf="@id/tv_estimasi" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -295,22 +280,22 @@
                 android:layout_width="95dp"
                 android:layout_height="18dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_regular"
                 android:text="@string/jumlah_barang"
                 android:textColor="#081639"
-                android:fontFamily="@font/poppins_regular"
                 android:textSize="12sp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_detail_pembayaran"
-                app:layout_constraintStart_toStartOf="@+id/tv_detail_pembayaran" />
+                app:layout_constraintStart_toStartOf="@+id/tv_detail_pembayaran"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_pembayaran" />
 
             <TextView
                 android:id="@+id/tv_barang"
                 android:layout_width="wrap_content"
                 android:layout_height="18dp"
+                android:layout_marginEnd="20dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="@string/tv_barang"
                 android:textColor="#081639"
                 android:textSize="12sp"
-                android:layout_marginEnd="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_jml_barang"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_jml_barang" />
@@ -319,13 +304,13 @@
                 android:id="@+id/tv_harga"
                 android:layout_width="38dp"
                 android:layout_height="18dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_regular"
                 android:text="@string/tv_harga"
                 android:textColor="#081639"
-                android:fontFamily="@font/poppins_regular"
                 android:textSize="12sp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_jml_barang"
-                app:layout_constraintStart_toStartOf="@+id/tv_jml_barang" />
+                app:layout_constraintStart_toStartOf="@+id/tv_jml_barang"
+                app:layout_constraintTop_toBottomOf="@+id/tv_jml_barang" />
 
             <TextView
                 android:id="@+id/tv_harga_barang"
@@ -343,11 +328,11 @@
                 android:id="@+id/tv_diskon"
                 android:layout_width="40dp"
                 android:layout_height="18dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/tv_disk"
                 android:textColor="#081639"
                 android:textSize="12sp"
-                android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="@+id/tv_harga"
                 app:layout_constraintTop_toBottomOf="@+id/tv_harga" />
 
@@ -368,8 +353,8 @@
                 android:layout_width="308dp"
                 android:layout_height="10dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#081639"
                 android:background="@drawable/line_detailpemesanan"
+                android:backgroundTint="#081639"
                 app:layout_constraintEnd_toEndOf="@+id/tv_diskon_barang"
                 app:layout_constraintStart_toStartOf="@+id/tv_diskon"
                 app:layout_constraintTop_toBottomOf="@+id/tv_diskon" />
@@ -379,28 +364,25 @@
                 android:layout_width="36dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="@string/tv_total"
                 android:textColor="#081639"
-                android:fontFamily="@font/poppins_semibold"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/line_detailpembayaran"
                 app:layout_constraintTop_toBottomOf="@+id/line_detailpembayaran" />
-            
+
             <TextView
                 android:layout_width="94dp"
                 android:layout_height="20dp"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="@string/tv_price"
                 android:textColor="#081639"
-                android:fontFamily="@font/poppins_semibold"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/tv_total"
-                app:layout_constraintTop_toTopOf="@id/tv_total"
-                app:layout_constraintEnd_toEndOf="@id/line_detailpembayaran" />
-
-
+                app:layout_constraintEnd_toEndOf="@id/line_detailpembayaran"
+                app:layout_constraintTop_toTopOf="@id/tv_total" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:layout_width="match_parent"
