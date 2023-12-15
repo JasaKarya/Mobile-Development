@@ -81,9 +81,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/white"
-            android:contentDescription="@string/btn_addcart"
-            app:icon="@drawable/ic_plus"
-            app:iconTint="#14255D"
+            android:contentDescription="@string/btn_fav"
+            app:icon="@drawable/ic_heart_fill"
+            app:iconTint="#ea4335"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
