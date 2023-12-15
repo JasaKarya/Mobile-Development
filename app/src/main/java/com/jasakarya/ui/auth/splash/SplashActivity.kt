@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.jasakarya.databinding.ActivitySplashBinding
+import com.jasakarya.ui.auth.login.LoginActivity
 import com.jasakarya.ui.home.HomeActivity
 
 @SuppressLint("CustomSplashScreen")
@@ -20,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(splashBinding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }, delayMillis)

@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.auth.register.SignUpActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
 
     <ImageButton
         android:id="@+id/ib_back"
@@ -18,6 +26,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
     
     <TextView
+        android:id="@+id/tv_sign_up"
         android:layout_width="181dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -29,15 +38,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-    
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/register"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"/>
+
+        <TextView
+            android:id="@+id/tv_fillFormPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Isi Data Diri"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tfLayout_username"/>
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register"
+            app:layout_constraintBottom_toTopOf="@+id/tv_fillFormPrompt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sign_up" />
 
     <ImageView
         android:id="@+id/iv_user"
@@ -59,10 +84,10 @@
         android:layout_marginTop="12dp"
         style="@style/Widget.Design.TextInputLayout"
         app:boxBackgroundMode="none"
-        android:hint="Username"
+        android:hint="@string/text_username"
         app:layout_constraintStart_toEndOf="@id/iv_user"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal">
+        app:layout_constraintTop_toBottomOf="@id/tv_fillFormPrompt">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tfEdit_username"
@@ -74,8 +99,8 @@
 
     <ImageView
         android:id="@+id/iv_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         android:src="@drawable/ic_at"
@@ -92,7 +117,7 @@
         android:layout_marginTop="12dp"
         style="@style/Widget.Design.TextInputLayout"
         app:boxBackgroundMode="none"
-        android:hint="Email"
+        android:hint="@string/text_email"
         app:layout_constraintStart_toEndOf="@id/iv_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tfLayout_username">
@@ -128,7 +153,7 @@
         app:passwordToggleEnabled="true"
         style="@style/Widget.Design.TextInputLayout"
         app:boxBackgroundMode="none"
-        android:hint="Password"
+        android:hint="@string/text_password"
         app:layout_constraintStart_toEndOf="@id/iv_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tfLayout_email">
@@ -142,101 +167,167 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/tv_terms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="24dp"
-        android:text="Terms of Use"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/navy"
+    <ImageView
+        android:id="@+id/iv_fullname"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:src="@drawable/ic_note"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@id/tfLayout_fullname"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfLayout_password" />
+        app:layout_constraintTop_toTopOf="@id/tfLayout_fullname" />
 
-    <TextView
-        android:id="@+id/tv_and"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="4dp"
-        android:text="and"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_terms"
-        app:layout_constraintTop_toBottomOf="@+id/tfLayout_password" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfLayout_fullname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            style="@style/Widget.Design.TextInputLayout"
+            app:boxBackgroundMode="none"
+            android:hint="@string/text_fullname"
+            app:layout_constraintStart_toEndOf="@id/iv_fullname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tfLayout_password">
 
-    <TextView
-        android:id="@+id/tv_privacy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="24dp"
-        android:text="Privacy Police"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/navy"
-        app:layout_constraintStart_toEndOf="@+id/tv_and"
-        app:layout_constraintTop_toBottomOf="@+id/tfLayout_password" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tfEdit_fullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/iv_gender"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/ic_user"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="@id/spinner_gender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/spinner_gender" />
+
+        <Spinner
+            android:id="@+id/spinner_gender"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/button_secondary"
+            app:layout_constraintBottom_toBottomOf="@id/tfLayout_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_gender"
+            app:layout_constraintTop_toBottomOf="@id/tfLayout_fullname"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_dateofbirth"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            android:paddingStart="16dp"
+            android:text="Tanggal Lahir"
+            android:textColor="@color/white"
+            android:drawableStart="@drawable/ic_calendar"
+            android:drawableTint="@color/white"
+            android:background="@drawable/button_primary"
+            app:layout_constraintTop_toBottomOf="@id/spinner_gender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+        <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/ic_location"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="@id/tfLayout_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tfLayout_location" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfLayout_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            style="@style/Widget.Design.TextInputLayout"
+            app:boxBackgroundMode="none"
+            android:hint="@string/text_location"
+            app:layout_constraintStart_toEndOf="@id/iv_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_dateofbirth">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tfEdit_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <Button
         android:id="@+id/btn_sign_up"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="Sign Up"
+        android:text="@string/text_signup"
         android:textSize="16sp"
         android:elevation="10dp"
         android:backgroundTint="@color/blue"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:cornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_terms"
+        app:layout_constraintTop_toBottomOf="@+id/tfLayout_location"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/message_to_join"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="122dp"
-        android:text="Joined us before?"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/btn_sign_up"
-        app:layout_constraintTop_toBottomOf="@id/btn_sign_up" />
+        <TextView
+            android:id="@+id/message_to_join"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/text_already_registered"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_sign_up"
+            app:layout_constraintBottom_toTopOf="@id/tv_login"/>
 
-    <TextView
-        android:id="@+id/tv_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:text="Login"
-        android:textColor="@color/navy"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/message_to_join"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="34dp"
+            android:text="@string/text_login"
+            android:textColor="@color/navy"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message_to_join" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHorizontal2"
-        android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.1"
-        app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

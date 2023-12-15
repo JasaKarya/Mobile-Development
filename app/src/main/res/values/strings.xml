@@ -56,5 +56,14 @@
     <string name="desc_menu_1">Tunjukkan kreativitasmu kepada dunia. Dapatkan dukungan dari kolektor design dan bangun reputasi sebagai kreator handal.</string>
     <string name="desc_menu_2">Jual karya kreatifmu di sini dan biarkan dunia menikmati keunikanmu! Bergabunglah sekarang untuk membuka peluang baru di dunia kreativitas.</string>
     <string name="desc_menu_3">Temukan komunitas kreatif di sini! Bergabunglah bersama desainer dari berbagai latar belakang untuk berbagi ide, inspirasi, dan dukungan. Jelajahi kreativitas bersama kami.</string>
+    <string name="register">Daftar</string>
+    <string name="text_username">Username</string>
+    <string name="text_password">Password</string>
+    <string name="text_email">Email</string>
+    <string name="text_fullname">Nama Lengkap</string>
+    <string name="text_location">Alamat</string>
+    <string name="text_already_registered">Anda sudah mendaftar?</string>
+    <string name="text_login">Masuk</string>
+    <string name="text_signup">Daftar</string>
 
 </resources>

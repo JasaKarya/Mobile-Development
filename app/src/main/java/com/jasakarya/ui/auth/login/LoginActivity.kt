@@ -1,16 +1,25 @@
 package com.jasakarya.ui.auth.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import com.jasakarya.R
 import com.jasakarya.databinding.ActivityLoginBinding
+import com.jasakarya.di.ViewModelFactory
+import com.jasakarya.ui.auth.register.SignUpActivity
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var factory: ViewModelFactory
+    private val viewModel: LoginViewModel by viewModels {factory}
 
     private var isShowPass = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,20 +27,56 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        factory = ViewModelFactory.getInstance(this)
+
+        binding.btnRegister.setOnClickListener{
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
+
+        binding.btnLogin.setOnClickListener{
+            val username = binding.tfEditUsername.text?.trim().toString()
+            val password = binding.tfEditPassword.text?.trim().toString()
+
+            try{
+                viewModel.login(username, password)
+            }
+            catch(e: Exception){
+                Toast.makeText(this, "Login Failed: error ${e}", Toast.LENGTH_SHORT).show()
+            }
+
+            viewModel.userLiveData.observe(this) {
+                if (it != null) {
+                    Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Welcome ${it.email}", Toast.LENGTH_SHORT).show()
+
+                }
+                else{
+                    Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
+
+
+
+
+        binding.ibBack.visibility = android.view.View.GONE
+        binding.btnLogin.isEnabled = false
+        togglePass()
+        passValid()
+        usernameValid()
+        checkValid()
+
+
+    }
+
+    private fun togglePass(){
         binding.tfLayoutPassword.setEndIconOnClickListener {
             isShowPass = !isShowPass
             showPass(isShowPass)
         }
-
-        binding.tfEditPassword.doOnTextChanged { text, start, before, count ->
-            if (text!!.length < 8) {
-                binding.tfLayoutPassword.error = "Password harus lebih dari 8 karakter"
-            } else if (text.length > 8) {
-                binding.tfLayoutPassword.error = null
-            }
-        }
     }
-
     private fun showPass(isShow: Boolean) {
         val textInput = binding.tfLayoutPassword
         val editText = binding.tfEditPassword
@@ -50,4 +95,73 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+    private fun passValid(){
+        binding.tfEditPassword.doOnTextChanged { text, start, before, count ->
+            if (text!!.length < 7) {
+                binding.tfLayoutPassword.error = "Password harus lebih dari 8 karakter"
+            } else if (text.length > 7) {
+                binding.tfLayoutPassword.error = null
+            }
+        }
+    }
+
+    private fun usernameValid(){
+        binding.tfEditUsername.doOnTextChanged { text, start, before, count ->
+            if (text!!.length < 3) {
+                binding.tfLayoutUsername.error = "Username tidak boleh kosong!"
+            } else if (text.length > 3) {
+                binding.tfLayoutUsername.error = null
+            }
+        }
+    }
+
+    private fun checkValid(){
+        var usernamevalid = false
+        var passwordvalid = false
+
+        binding.tfEditUsername.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(string: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(string: CharSequence?, start: Int, before: Int, count: Int) {
+                val textUsername = string?.trim().toString()
+                val textPassword = binding.tfEditPassword.text?.trim().toString()
+                if(textUsername.length>3 && textPassword.length>7){
+                    binding.btnLogin.isEnabled = true
+                }
+                else{
+                    binding.btnLogin.isEnabled = false
+                }
+            }
+
+            override fun afterTextChanged(string: Editable?) {}
+        })
+
+        binding.tfEditPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(string: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(string: CharSequence?, start: Int, before: Int, count: Int) {
+                val textPassword = string?.trim().toString()
+                val textUsername = binding.tfEditUsername.text?.trim().toString()
+                if(textUsername.length>3 && textPassword.length>7){
+                    binding.btnLogin.isEnabled = true
+
+                }
+                else{
+                    binding.btnLogin.isEnabled = false
+                }
+            }
+            override fun afterTextChanged(string: Editable?) {}
+        })
+
+        if(usernamevalid && passwordvalid){
+            binding.btnLogin.isEnabled = true
+        }
+        else{
+            binding.btnLogin.isEnabled = false
+        }
+    }
+
+
+
+
+
+
 }
