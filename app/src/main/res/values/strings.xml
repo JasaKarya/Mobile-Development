@@ -13,15 +13,15 @@
     <string name="icon_username">Icon Username</string>
     <string name="ib_back">Button Back</string>
     <string name="icon_password">Icon Password</string>
-  
-    <string name="tv_cart">Cart</string>
+
+    <string name="tv_keranjang">Keranjang</string>
     <string name="btn_buat_pesanan">Buat Pesanan</string>
     <string name="iv_product">IV Cart</string>
     <string name="name_product">Desain Kaos Ilustrasi</string>
     <string name="tv_category">Paket: Silver</string>
     <string name="tv_price">Rp. 150.000.-</string>
     <string name="btn_fav">Button Favorite</string>
-    <string name="tv_payment">Payment</string>
+    <string name="tv_pembayaran">Pembayaran</string>
     <string name="btn_pay">Pembayaran</string>
     <string name="tv_detail_pemesanan">Detail Pemesanan</string>
     <string name="btn_check">Chekclist</string>
@@ -56,5 +56,11 @@
     <string name="desc_menu_1">Tunjukkan kreativitasmu kepada dunia. Dapatkan dukungan dari kolektor design dan bangun reputasi sebagai kreator handal.</string>
     <string name="desc_menu_2">Jual karya kreatifmu di sini dan biarkan dunia menikmati keunikanmu! Bergabunglah sekarang untuk membuka peluang baru di dunia kreativitas.</string>
     <string name="desc_menu_3">Temukan komunitas kreatif di sini! Bergabunglah bersama desainer dari berbagai latar belakang untuk berbagi ide, inspirasi, dan dukungan. Jelajahi kreativitas bersama kami.</string>
-
+    <string name="tv_metode_pembayaran">Metode Pembayaran :</string>
+    <string name="iv_gopay">Image View Gopay</string>
+    <string name="iv_atmbersama">Image View ATM Bersama</string>
+    <string name="iv_linkaja">Image View LinkAja</string>
+    <string name="iv_dana">Image View Dana</string>
+    <string name="btn_addcart">Tambah Keranjang</string>
+    <string name="tv_favorite">Favorite</string>
 </resources>
