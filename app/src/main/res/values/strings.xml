@@ -73,5 +73,14 @@
     <string name="tv_metode_pembayaran">Metode Pembayaran :</string>
     <string name="tv_keranjang">Keranjang</string>
     <string name="tv_favorite">Favorit</string>
+    <string name="tv_status_pembelian">Status Pembelian</string>
+    <string name="tv_onprogress">On Progress</string>
+    <string name="tv_selesai">Selesai</string>
+    <string name="tv_detail">Detail</string>
+    <string name="tv_review">Review</string>
+    <string name="rating_produk">Berikan Rating Produk ini</string>
+    <string name="tv_berikan_ulasan">Bagaimana Pendapatmu dengan Produk Ini?</string>
+    <string name="masukkan_ulasan">Masukkan Ulasan</string>
+    <string name="btn_upload">Upload</string>
 
 </resources>
