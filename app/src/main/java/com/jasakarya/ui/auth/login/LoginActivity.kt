@@ -29,6 +29,13 @@ class LoginActivity : AppCompatActivity() {
 
         factory = ViewModelFactory.getInstance(this)
 
+        try{
+            viewModel.logout()
+        }
+        catch(e: Exception){
+            e.printStackTrace()
+        }
+
         binding.btnRegister.setOnClickListener{
             startActivity(Intent(this, SignUpActivity::class.java))
         }
