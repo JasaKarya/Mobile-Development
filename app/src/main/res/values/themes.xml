@@ -4,6 +4,7 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorOutline">@color/dark_navy</item>
+
         <item name="colorPrimary">@color/dark_navy</item>
         <item name="colorOnPrimary">@color/white</item>
 
@@ -11,7 +12,33 @@
         <item name="colorOnSecondary">@color/white</item>
 
 
+
     </style>
 
     <style name="Theme.JasaKarya" parent="Base.Theme.JasaKarya" />
+
+
+    <style name="FilterChip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/filter_button_background</item>
+        <item name="android:textColor">@color/filter_text_color</item>
+    </style>
+
+    <style name="CustomChip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/button_background_selector</item>
+        <item name="android:textColor">@color/button_text_color</item>
+    </style>
+
+    <style name="SettingFAB" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="tint">@color/white</item>
+    </style>
+
+<!-- Elemen untuk Tab Layout -->
+    <style name="Widget.App.TabLayout" parent="Widget.Material3.TabLayout">
+        <item name="tabTextAppearance">@style/TextAppearance.App.LabelLarge</item>
+    </style>
+
+    <style name="TextAppearance.App.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+    </style>
 </resources>

@@ -1,5 +1,6 @@
 package com.jasakarya.data.model
 
+
 data class Talent(
     val avg_rating: Double,
     val content: Content,
@@ -24,3 +25,4 @@ data class Package(
     val package_name: String,
     val package_price: Int
 )
+

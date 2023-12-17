@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cart.CartActivity">
+    tools:context=".ui.cart.StatusPembelianActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/ib_back"
@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@null"
         android:contentDescription="@string/ib_back"
         app:icon="@drawable/button_back"
         app:iconTint="#279EFF"
@@ -21,12 +20,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_cart"
+        android:id="@+id/tv_statuspembelian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/ubuntu_bold"
-        android:text="@string/tv_keranjang"
+        android:text="@string/tv_status_pembelian"
         android:textColor="#279EFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/ib_back"
@@ -46,35 +45,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_cart"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutStatus"
+        style="@style/Widget.App.TabLayout"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_cart">
+        app:layout_constraintTop_toBottomOf="@+id/tv_statuspembelian"
+        app:tabSelectedTextColor="#14255D"
+        app:tabTextColor="#279EFF"
+        app:tabIndicatorColor="#14255D"
+        app:tabMode="fixed">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabOngoing"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_cart_user" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content"
+            android:text="@string/tv_onprogress" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#279EFF"
-        android:fontFamily="@font/ubuntu_medium"
-        android:text="@string/btn_buat_pesanan"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintTop_toBottomOf="@id/cl_cart" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabSelesai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_selesai" />
+    </com.google.android.material.tabs.TabLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

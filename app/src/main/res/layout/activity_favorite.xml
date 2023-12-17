@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cart.CartActivity">
+    tools:context=".ui.favorite.FavoriteActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/ib_back"
@@ -21,12 +21,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_cart"
+        android:id="@+id/tv_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/ubuntu_bold"
-        android:text="@string/tv_keranjang"
+        android:text="@string/tv_favorite"
         android:textColor="#279EFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/ib_back"
@@ -47,13 +47,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_cart"
+        android:id="@+id/cl_favorite"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_cart">
+        app:layout_constraintTop_toBottomOf="@id/tv_favorite">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_cart_user" />
+            tools:listitem="@layout/item_favorite_user" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -76,5 +76,5 @@
         android:text="@string/btn_buat_pesanan"
         android:textColor="@color/white"
         android:textSize="17sp"
-        app:layout_constraintTop_toBottomOf="@id/cl_cart" />
+        app:layout_constraintTop_toBottomOf="@id/cl_favorite" />
 </androidx.constraintlayout.widget.ConstraintLayout>
