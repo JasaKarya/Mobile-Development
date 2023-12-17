@@ -56,6 +56,17 @@
     <string name="desc_menu_1">Tunjukkan kreativitasmu kepada dunia. Dapatkan dukungan dari kolektor design dan bangun reputasi sebagai kreator handal.</string>
     <string name="desc_menu_2">Jual karya kreatifmu di sini dan biarkan dunia menikmati keunikanmu! Bergabunglah sekarang untuk membuka peluang baru di dunia kreativitas.</string>
     <string name="desc_menu_3">Temukan komunitas kreatif di sini! Bergabunglah bersama desainer dari berbagai latar belakang untuk berbagi ide, inspirasi, dan dukungan. Jelajahi kreativitas bersama kami.</string>
+
+    <string name="register">Daftar</string>
+    <string name="text_username">Username</string>
+    <string name="text_password">Password</string>
+    <string name="text_email">Email</string>
+    <string name="text_fullname">Nama Lengkap</string>
+    <string name="text_location">Alamat</string>
+    <string name="text_already_registered">Anda sudah mendaftar?</string>
+    <string name="text_login">Masuk</string>
+    <string name="text_signup">Daftar</string>
+
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</string>
     <string name="choose_category_text">Pilih kategori yang kamu suka...</string>
     <string name="brochure">Brosur</string>
@@ -82,5 +93,6 @@
     <string name="tv_berikan_ulasan">Bagaimana Pendapatmu dengan Produk Ini?</string>
     <string name="masukkan_ulasan">Masukkan Ulasan</string>
     <string name="btn_upload">Upload</string>
+
 
 </resources>

@@ -11,7 +11,7 @@ object ApiConfig {
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl("https://einzsolnet.000webhostapp.com")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

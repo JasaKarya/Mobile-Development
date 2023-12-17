@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "155850436191",
+    "project_id": "jasakarya-e4afc",
+    "storage_bucket": "jasakarya-e4afc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155850436191:android:2d55e2a4d6ff1a725875ea",
+        "android_client_info": {
+          "package_name": "com.jasakarya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155850436191-tjs5iitm4n6mu93f6eul03eh9qu8vfhu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jasakarya",
+            "certificate_hash": "10b718e0a785a3ea903a69116106fba6e31fab8b"
+          }
+        },
+        {
+          "client_id": "155850436191-rqv4693oar6sllb5mqbobqf226h56jcc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz1yyZH1a4b9h2vC62SJ1UEgeOKun3GqQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155850436191-rqv4693oar6sllb5mqbobqf226h56jcc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

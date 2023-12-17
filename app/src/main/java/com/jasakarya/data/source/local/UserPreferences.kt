@@ -1,6 +1,7 @@
 package com.jasakarya.data.source.local
 
 import android.content.Context
+import com.jasakarya.data.model.Biodata
 
 class UserPreferences(context: Context){
     private val preferences = context.getSharedPreferences("userPref", Context.MODE_PRIVATE)
