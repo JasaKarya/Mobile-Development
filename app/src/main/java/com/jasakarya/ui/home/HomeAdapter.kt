@@ -5,13 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.jasakarya.ui.home.HomeAdapter.MyViewHolder.Companion.DIFF_CALLBACK
-import com.jasakarya.data.model.Home
+import com.jasakarya.data.model.Talent
 import com.jasakarya.databinding.ItemRowServiceBinding
 
 class HomeAdapter (
-    private val onClick: (Home) -> Unit
-) : ListAdapter<Home, HomeAdapter.MyViewHolder>(DIFF_CALLBACK) {
+    private val onClick: (Talent) -> Unit
+) : ListAdapter<Talent, HomeAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding =
@@ -26,34 +27,35 @@ class HomeAdapter (
 
     class MyViewHolder(
         private val binding: ItemRowServiceBinding,
-        private val onClick: (Home) -> Unit
+        private val onClick: (Talent) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(home: Home) {
+        fun bind(talent: Talent) {
             binding.apply {
-                binding.imgItemPhoto.setImageResource(home.photoUrl)
-                binding.tvItemName.text = home.title
-                binding.tvRate.text = home.rate.toString()
-                binding.tvItemDescription.text = "Mulai dari ${home.price}k"
+                Glide.with(root.context)
+                    .load(talent.profileUrl)
+                    .into(imgItemPhoto)
+                tvItemName.text = talent.talentName
+                tvRate.text = talent.avgRating.toString()
 
                 root.setOnClickListener {
-                    onClick(home)
+                    onClick(talent)
                 }
             }
         }
 
         companion object {
 
-            val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Home>() {
+            val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Talent>() {
                 override fun areItemsTheSame(
-                    oldItem: Home,
-                    newItem: Home
+                    oldItem: Talent,
+                    newItem: Talent
                 ): Boolean {
-                    return oldItem.title == newItem.title
+                    return oldItem.talentName == newItem.talentName
                 }
 
                 override fun areContentsTheSame(
-                    oldItem: Home,
-                    newItem: Home
+                    oldItem: Talent,
+                    newItem: Talent
                 ): Boolean {
                     return oldItem == newItem
                 }

@@ -1,12 +1,16 @@
 package com.jasakarya.ui.home
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.jasakarya.data.model.Home
+import com.jasakarya.data.model.Talent
 import com.jasakarya.R
+import com.jasakarya.data.model.DummyListTalent
 import com.jasakarya.databinding.ActivityHomeBinding
+import com.jasakarya.ui.detail.DetailActivity
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -16,46 +20,29 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapterFilter = FilterAdapter(onClick = { title ->
-            when (title.text) {
-                "Relevan" -> {
+        binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.chip_relevant -> {
 
                 }
-                "Populer" -> {
+                R.id.chip_populer -> {
 
                 }
-                "Terlaris" -> {
+                R.id.chip_terlaris -> {
 
                 }
-                "Terderkat" -> {
+                R.id.chip_terdekat -> {
 
                 }
             }
-        })
-        val adapterHome = HomeAdapter(onClick = { service ->
-
-        })
-
-        val textButtonList = arrayListOf(
-            ButtonFilter("Relevan"),
-            ButtonFilter("Populer"),
-            ButtonFilter("Terlaris"),
-            ButtonFilter("Tedekat"),
-        )
-        binding.apply {
-            with(rvFilter) {
-                layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
-                setHasFixedSize(true)
-                this.adapter = adapterFilter
-            }
-            adapterFilter.submitList(textButtonList)
         }
 
-        val listHome = listOf(
-            Home("Costume Merchandise", 50, 5, R.drawable.custom_merch),
-            Home("Desain Poster", 50, 5, R.drawable.desain_poster),
-            Home("Template Presentasi", 50, 5, R.drawable.template_presentasi),
-        )
+
+        val adapterHome = HomeAdapter(onClick = { talent ->
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra(DetailActivity.EXTRA_TALENT, talent)
+            startActivity(intent)
+        })
 
         binding.apply {
             with(rvService) {
@@ -63,7 +50,7 @@ class HomeActivity : AppCompatActivity() {
                 setHasFixedSize(true)
                 this.adapter = adapterHome
             }
-            adapterHome.submitList(listHome)
+            adapterHome.submitList(DummyListTalent.listTalent)
         }
 
     }

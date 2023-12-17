@@ -13,7 +13,7 @@
     <string name="icon_username">Icon Username</string>
     <string name="ib_back">Button Back</string>
     <string name="icon_password">Icon Password</string>
-  
+
     <string name="tv_cart">Cart</string>
     <string name="btn_buat_pesanan">Buat Pesanan</string>
     <string name="iv_product">IV Cart</string>
@@ -56,5 +56,18 @@
     <string name="desc_menu_1">Tunjukkan kreativitasmu kepada dunia. Dapatkan dukungan dari kolektor design dan bangun reputasi sebagai kreator handal.</string>
     <string name="desc_menu_2">Jual karya kreatifmu di sini dan biarkan dunia menikmati keunikanmu! Bergabunglah sekarang untuk membuka peluang baru di dunia kreativitas.</string>
     <string name="desc_menu_3">Temukan komunitas kreatif di sini! Bergabunglah bersama desainer dari berbagai latar belakang untuk berbagi ide, inspirasi, dan dukungan. Jelajahi kreativitas bersama kami.</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</string>
+    <string name="choose_category_text">Pilih kategori yang kamu suka...</string>
+    <string name="brochure">Brosur</string>
+    <string name="poster">Poster</string>
+    <string name="merchandise">Merchandise</string>
+    <string name="logo">Logo</string>
+    <string name="infographics">Infografis</string>
+    <string name="presentation">Presentasi</string>
+    <string name="interior">Interior</string>
+    <string name="ui_ux_design">UI / UX Design</string>
+    <string name="ilustrastion">Ilustrasi</string>
+    <string name="copy_writing">Copywriting</string>
+    <string name="next_to_home_text">Lanjut Gak sihh...</string>
 
 </resources>
