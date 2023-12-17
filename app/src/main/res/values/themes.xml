@@ -24,6 +24,13 @@
         <item name="tint">@color/white</item>
     </style>
 
+<!-- Elemen untuk Tab Layout -->
+    <style name="Widget.App.TabLayout" parent="Widget.Material3.TabLayout">
+        <item name="tabTextAppearance">@style/TextAppearance.App.LabelLarge</item>
+    </style>
 
-
+    <style name="TextAppearance.App.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+    </style>
 </resources>

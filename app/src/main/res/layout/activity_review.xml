@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.cart.ReviewActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ib_back"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/ib_back"
+        app:icon="@drawable/button_back"
+        app:iconTint="#279EFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:text="@string/tv_review"
+        android:textColor="#279EFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ib_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ib_back" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/iconButton"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:icon="@drawable/shopping_bag"
+        app:iconTint="#279EFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_review"
+        android:layout_width="345dp"
+        android:layout_height="185dp"
+        android:scaleType="fitCenter"
+        android:background="@color/black"
+        android:src="@drawable/gambar_review"
+        android:layout_marginTop="30dp"
+        app:shapeAppearanceOverlay="@style/CornerCutReview"
+        app:layout_constraintTop_toBottomOf="@+id/tv_review"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:id="@+id/cv_reviewproduk"
+        android:layout_width="345dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="20dp"
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_review"
+        app:strokeColor="#081639"
+        app:strokeWidth="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_ratingproduk"
+                android:layout_width="205dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/rating_produk"
+                android:textColor="#081639"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/ratingbar_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ratingproduk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:id="@+id/cv_reviewulasan"
+        android:layout_width="345dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="20dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/cv_reviewproduk"
+        app:strokeColor="#081639"
+        app:strokeWidth="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_reviewulasan"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/tv_berikan_ulasan"
+                android:textColor="#081639"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfLayout_Ulasan"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="12dp"
+                android:hint="@string/masukkan_ulasan"
+                app:boxBackgroundMode="none"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfEdit_Ulasan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_upload"
+        android:layout_width="345dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#279EFF"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/btn_upload"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@+id/cv_reviewulasan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
