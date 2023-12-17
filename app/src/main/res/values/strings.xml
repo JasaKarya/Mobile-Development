@@ -69,5 +69,9 @@
     <string name="ilustrastion">Ilustrasi</string>
     <string name="copy_writing">Copywriting</string>
     <string name="next_to_home_text">Lanjut Gak sihh...</string>
+    <string name="tv_checkout">Checkout</string>
+    <string name="tv_metode_pembayaran">Metode Pembayaran :</string>
+    <string name="tv_keranjang">Keranjang</string>
+    <string name="tv_favorite">Favorit</string>
 
 </resources>
