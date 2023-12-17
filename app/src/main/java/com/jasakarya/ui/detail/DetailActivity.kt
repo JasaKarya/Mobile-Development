@@ -11,10 +11,16 @@ import android.text.style.BulletSpan
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.component1
 import androidx.core.text.bold
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.jasakarya.R
+import com.jasakarya.data.model.Content
+import com.jasakarya.data.model.DummyListTalent
+import com.jasakarya.data.model.OrderPackage
 import com.jasakarya.data.model.Profile
+import com.jasakarya.data.model.Talent
 import com.jasakarya.databinding.ActivityDetailBinding
 import com.jasakarya.ui.profile.ProfileAdapter
 
@@ -25,6 +31,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var ilustartorDescText: String
     private lateinit var ilustartorDesc: TextView
     private var isFavorite = false
+    private  var talent: Talent? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +60,14 @@ class DetailActivity : AppCompatActivity() {
             Profile(R.drawable.profile3),
             Profile(R.drawable.profile3),
             )
+        talent = intent.getParcelableExtra(EXTRA_TALENT)
 
+        talent.let {
+            if (talent != null){
+                populateDetailTalent(talent!!)
+            }
+
+        }
 
         binding.apply {
             tvFavorite.setOnClickListener {
@@ -200,5 +214,36 @@ class DetailActivity : AppCompatActivity() {
             spannableBuilder.append(spannable)
         }
         return spannableBuilder
+    }
+
+    private fun populateDetailTalent(talent: Talent){
+        binding.apply {
+            val content = talent.content.find { content ->  content.contentId == "11122"}
+
+            content?.let {
+                Glide.with(this@DetailActivity)
+                    .load(content.imageUrl)
+                    .into(ivProfileUrl)
+                tvTitle.text = content.contentName
+                tvDescription.text = content.description
+                tvRate.text = content.rating.toString()
+
+                val orderPackage1 = content.orderPackage.find { orderPackage ->  orderPackage.orderPackageId == 11122231 }
+                val orderPackage2 = content.orderPackage.find { orderPackage ->  orderPackage.orderPackageId == 11122232 }
+                val orderPackage3 = content.orderPackage.find { orderPackage ->  orderPackage.orderPackageId == 11122233 }
+
+                tvCardview1.text = orderPackage1!!.orderPackageName
+                tvCardview2.text = orderPackage2!!.orderPackageName
+                tvCardview3.text = orderPackage3!!.orderPackageName
+            }
+
+
+
+        }
+
+    }
+
+    companion object{
+        const val EXTRA_TALENT = "extra_talent"
     }
 }

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <ImageButton
-            android:id="@+id/ib_search"
+            android:id="@+id/ib_app_logo"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="24dp"
@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageButton
-            android:id="@+id/ib_sort"
+            android:id="@+id/ib_profile"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="24dp"
@@ -40,7 +40,7 @@
             android:layout_marginBottom="8dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/ib_search"
+            app:layout_constraintTop_toBottomOf="@+id/ib_app_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/iv_profile_url"
                     android:layout_width="342dp"
                     android:layout_height="248dp"
                     android:scaleType="centerCrop"
@@ -132,7 +133,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
-            android:text="@string/detail_description"
+            android:text="@string/lorem_ipsum"
             android:textColor="@color/dark_navy"
             android:textSize="14sp"
             android:maxLines="2"

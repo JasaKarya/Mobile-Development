@@ -35,7 +35,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.detail.DetailActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".ui.auth.splash.SplashActivity"
             android:exported="true">

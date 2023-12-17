@@ -44,6 +44,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
 
+
 //        binding.btnSignUp.setOnClickListener {
 //            val name = binding.tfEditUsername.text.toString()
 //            val email = binding.tfEditEmail.text.toString()

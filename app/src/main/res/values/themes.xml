@@ -4,7 +4,26 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorOutline">@color/dark_navy</item>
+
     </style>
 
     <style name="Theme.JasaKarya" parent="Base.Theme.JasaKarya" />
+
+
+    <style name="FilterChip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/filter_button_background</item>
+        <item name="android:textColor">@color/filter_text_color</item>
+    </style>
+
+    <style name="CustomChip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/button_background_selector</item>
+        <item name="android:textColor">@color/button_text_color</item>
+    </style>
+
+    <style name="SettingFAB" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="tint">@color/white</item>
+    </style>
+
+
+
 </resources>
