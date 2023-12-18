@@ -93,6 +93,11 @@
     <string name="tv_berikan_ulasan">Bagaimana Pendapatmu dengan Produk Ini?</string>
     <string name="masukkan_ulasan">Masukkan Ulasan</string>
     <string name="btn_upload">Upload</string>
+    <string name="iv_gopay">Payment GoPay</string>
+    <string name="iv_atmbersama">Payment ATM Bersama</string>
+    <string name="iv_linkaja">Payment LinkAja</string>
+    <string name="iv_dana">Paymnet Dana</string>
+    <string name="btn_addcart">Button Add Cart</string>
 
 
 </resources>

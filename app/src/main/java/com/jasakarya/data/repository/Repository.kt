@@ -14,7 +14,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.jasakarya.data.model.Biodata
 import com.jasakarya.data.model.Content
-import com.jasakarya.data.model.Talent
 import com.jasakarya.data.model.User
 import com.jasakarya.data.source.remote.ApiServices
 
@@ -29,7 +28,7 @@ class Repository (private val apiServices: ApiServices, private val context: Con
 
     val biodataLiveData: MutableLiveData<Biodata?> = MutableLiveData()
 
-    val talentsLiveData = MutableLiveData<List<Talent>?>()
+    val talentsLiveData = MutableLiveData<List<Content>?>()
 
     val contentsLiveData = MutableLiveData<List<Content>?>()
 
@@ -110,7 +109,7 @@ class Repository (private val apiServices: ApiServices, private val context: Con
         databaseReference.limitToFirst(limit)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val talents = snapshot.children.mapNotNull { it.getValue(Talent::class.java) }
+                    val talents = snapshot.children.mapNotNull { it.getValue(Content::class.java) }
                     talentsLiveData.postValue(talents)
                 }
 

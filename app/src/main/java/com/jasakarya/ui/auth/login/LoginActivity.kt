@@ -14,6 +14,7 @@ import com.jasakarya.R
 import com.jasakarya.databinding.ActivityLoginBinding
 import com.jasakarya.di.ViewModelFactory
 import com.jasakarya.ui.auth.register.SignUpActivity
+import com.jasakarya.ui.home.HomeActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -55,6 +56,11 @@ class LoginActivity : AppCompatActivity() {
                 if (it != null) {
                     Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
                     Toast.makeText(this, "Welcome ${it.email}", Toast.LENGTH_SHORT).show()
+                    //clear all activity
+                    val intent = Intent(this, HomeActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(Intent(this, HomeActivity::class.java))
 
                 }
                 else{

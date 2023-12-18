@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.jasakarya.data.repository.Repository
 import com.jasakarya.ui.auth.login.LoginViewModel
 import com.jasakarya.ui.auth.register.SignUpViewModel
+import com.jasakarya.ui.home.HomeViewModel
 
 class ViewModelFactory private constructor(private val repository: Repository) :
     ViewModelProvider.NewInstanceFactory() {
@@ -18,6 +19,9 @@ class ViewModelFactory private constructor(private val repository: Repository) :
                 }
                 modelClass.isAssignableFrom(SignUpViewModel::class.java) -> {
                     return SignUpViewModel(repository) as T
+                }
+                modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                    return HomeViewModel(repository) as T
                 }
                 else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
             }
