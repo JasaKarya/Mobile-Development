@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 data class Talent(
     val avg_rating: Double = 0.0,
-    val content: Content,
+    val content: Content = Content(),
     val image_url: String = "",
     val talent_brief: String = "",
     val talent_id: String = "",

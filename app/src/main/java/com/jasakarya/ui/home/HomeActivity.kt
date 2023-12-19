@@ -27,9 +27,9 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel.getContents(30)
         viewModel.contents.observe(this) { contents ->
-            val adapterHome = HomeAdapter(onClick = { talent ->
-//                val intent = Intent(this, DetailActivity::class.java)
-//                intent.putExtra(DetailActivity.EXTRA_TALENT, talent)
+            val adapterHome = HomeAdapter(onClick = { content ->
+                val intent = Intent(this, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_CONTENT_ID, content.content_id)
                 startActivity(intent)
             })
 
@@ -61,20 +61,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
-        val adapterHome = HomeAdapter(onClick = { talent ->
-            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra(DetailActivity.EXTRA_TALENT, talent)
-            startActivity(intent)
-        })
 
-//        binding.apply {
-//            with(rvService) {
-//                layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-//                setHasFixedSize(true)
-//                this.adapter = adapterHome
-//            }
-//            adapterHome.submitList(DummyListTalent.listTalent)
-//        }
 
     }
 

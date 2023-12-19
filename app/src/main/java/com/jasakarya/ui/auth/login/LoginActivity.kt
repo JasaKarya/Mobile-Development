@@ -58,9 +58,8 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Welcome ${it.email}", Toast.LENGTH_SHORT).show()
                     //clear all activity
                     val intent = Intent(this, HomeActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
 
                 }
                 else{

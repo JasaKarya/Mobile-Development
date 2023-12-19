@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.google.firebase.auth.FirebaseAuth
 import com.jasakarya.databinding.ActivitySplashBinding
 import com.jasakarya.ui.auth.login.LoginActivity
 import com.jasakarya.ui.home.HomeActivity
@@ -14,6 +15,7 @@ import com.jasakarya.ui.home.HomeActivity
 class SplashActivity : AppCompatActivity() {
     private var _splashBinding: ActivitySplashBinding? = null
     private val splashBinding get() = _splashBinding!!
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +23,15 @@ class SplashActivity : AppCompatActivity() {
         setContentView(splashBinding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
+            if (firebaseAuth.currentUser != null) {
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }, delayMillis)
     }
 

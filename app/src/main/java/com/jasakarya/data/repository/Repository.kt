@@ -14,6 +14,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.jasakarya.data.model.Biodata
 import com.jasakarya.data.model.Content
+import com.jasakarya.data.model.Talent
 import com.jasakarya.data.model.User
 import com.jasakarya.data.source.remote.ApiServices
 
@@ -35,6 +36,8 @@ class Repository (private val apiServices: ApiServices, private val context: Con
     val preferenceCreatedLiveData = MutableLiveData<Boolean>()
 
     val userHasPreferencesLiveData = MutableLiveData<Boolean>()
+
+    val talentLiveData = MutableLiveData<Talent?>()
 
 
     init{
@@ -200,6 +203,29 @@ class Repository (private val apiServices: ApiServices, private val context: Con
 
             override fun onCancelled(databaseError: DatabaseError) {
                 // Handle possible errors
+            }
+        })
+    }
+
+    suspend fun fetchTalentByContentId(contentId: Int) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("talents")
+
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var fetchedTalent: Talent? = null
+                for (talentSnapshot in snapshot.children) {
+                    val content = talentSnapshot.child("content").getValue(Content::class.java)
+                    if (content?.content_id == contentId) {
+                        fetchedTalent = talentSnapshot.getValue(Talent::class.java)
+                        break // Found the talent, no need to continue loop
+                    }
+                }
+                talentLiveData.postValue(fetchedTalent)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("Error", "onCancelled: ${databaseError.message}")
+                talentLiveData.postValue(null) // Post null in case of error
             }
         })
     }
