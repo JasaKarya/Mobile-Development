@@ -1,4 +1,4 @@
-package com.jasakarya.utils
+package com.jasakarya.data
 
 sealed class ResultState<out T> {
     data class Success<out T>(val data: T) : ResultState<T>()

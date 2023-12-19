@@ -98,6 +98,19 @@
     <string name="iv_linkaja">Payment LinkAja</string>
     <string name="iv_dana">Paymnet Dana</string>
     <string name="btn_addcart">Button Add Cart</string>
+    <string name="tv_profile">Profile</string>
+    <string name="tv_username">Username</string>
+    <string name="tv_email">email@email.com</string>
+    <string name="logout">Logout</string>
+    <string name="btn_logout">Logout</string>
+    <string name="personal">Data Pribadi</string>
+    <string name="name">Nama :</string>
+    <string name="tanggal">Tanggal Lahir :</string>
+    <string name="tanggallahir">01/01/0001</string>
+    <string name="jeniskelamin">Jenis Kelamin :</string>
+    <string name="value_jeniskelamin">Laki-laki</string>
+    <string name="alamat">Alamat :</string>
+    <string name="value_alamat">Jl. Rumah Belok Simpang Dua</string>
 
 
 </resources>
