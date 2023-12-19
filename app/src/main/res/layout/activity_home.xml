@@ -41,7 +41,8 @@
             android:layout_marginEnd="24dp"
             android:layout_marginTop="24dp"
             android:background="@null"
-            android:src="@drawable/ic_sortby"
+            android:src="@drawable/ic_person"
+            app:tint="@color/dark_navy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
     
@@ -168,7 +169,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="12dp"
             app:cardUseCompatPadding="true"
-            app:layout_constraintEnd_toStartOf="@id/fab_Setting"
+            app:layout_constraintEnd_toStartOf="@id/fab_Search"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardview3"
             android:visibility="visible">
@@ -178,13 +179,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:iconifiedByDefault="false"
-                app:searchIcon="@drawable/ic_search"
                 app:queryBackground="@android:color/transparent"
-                app:queryHint="Cara jasa . . ." />
+                app:queryHint="Cari jasa . . ." />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_Setting"
+            android:id="@+id/fab_Search"
             style="@style/SettingFAB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/cardview_search"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_setting"
+            app:srcCompat="@drawable/ic_search"
             />
 
 
@@ -250,14 +250,14 @@
                     app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_terlaris"
+                    android:id="@+id/chip_semua"
                     style="@style/FilterChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:checked="false"
                     android:elevation="6dp"
-                    android:text="Terlaris"
+                    android:text="Semua"
                     android:textAlignment="center"
                     android:textSize="16sp"
                     app:checkedIconVisible="false"
@@ -265,19 +265,21 @@
                     app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_terdekat"
+                    android:id="@+id/chip_explore"
                     style="@style/FilterChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:checked="false"
                     android:elevation="6dp"
-                    android:text="Terdekat"
+                    android:text="Explore"
                     android:textAlignment="center"
                     android:textSize="16sp"
                     app:checkedIconVisible="false"
                     app:chipCornerRadius="40dp"
                     app:chipStrokeWidth="0dp" />
+
+
 
             </com.google.android.material.chip.ChipGroup>
 

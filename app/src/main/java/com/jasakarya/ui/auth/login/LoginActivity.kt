@@ -55,9 +55,7 @@ class LoginActivity : AppCompatActivity() {
             viewModel.userLiveData.observe(this) {
                 if (it != null) {
                     Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(this, "Welcome ${it.email}", Toast.LENGTH_SHORT).show()
-                    //clear all activity
-                    val intent = Intent(this, HomeActivity::class.java)
+//                Toast.makeText(this, "Welcome ${it.email}", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, HomeActivity::class.java))
                     finish()
 
@@ -66,7 +64,10 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
                 }
             }
+
         }
+
+
 
 
 

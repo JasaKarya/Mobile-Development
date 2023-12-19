@@ -1,25 +1,24 @@
-package com.jasakarya.ui.home
+package com.jasakarya.ui.cart
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-//import com.jasakarya.ui.home.HomeAdapter.MyViewHolder.Companion.DIFF_CALLBACK
+import com.jasakarya.data.model.Cart
 import com.jasakarya.data.model.Content
+import com.jasakarya.databinding.ItemCartUserBinding
 import com.jasakarya.databinding.ItemRowServiceBinding
-import com.jasakarya.ui.detail.DetailActivity
-import com.jasakarya.ui.home.HomeAdapter.MyViewHolder.Companion.DIFF_CALLBACK
+import com.jasakarya.ui.cart.CartAdapter.MyViewHolder.Companion.DIFF_CALLBACK_CART
 
-class HomeAdapter (
-    private val onClick: (Content) -> Unit
-) : ListAdapter<Content, HomeAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class CartAdapter (
+    private val onClick: (Cart) -> Unit
+) : ListAdapter<Cart, CartAdapter.MyViewHolder>(DIFF_CALLBACK_CART) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding =
-            ItemRowServiceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemCartUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding, onClick)
     }
 
@@ -29,19 +28,20 @@ class HomeAdapter (
     }
 
     class MyViewHolder(
-        private val binding: ItemRowServiceBinding,
-        private val onClick: (Content) -> Unit
+        private val binding: ItemCartUserBinding,
+        private val onClick: (Cart) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(content: Content) {
+        fun bind(cart: Cart) {
             binding.apply {
                 Glide.with(root.context)
-                    .load(content.image_url)
-                    .into(imgItemPhoto)
-                tvItemName.text = content.content_name
-                tvRate.text = content.rating.toString()
+                    .load(cart.imgUrl)
+                    .into(ivProduct)
+                nameProduct.text = cart.contentName
+                tvCategory.text = cart.selectedPackage.package_name
+                tvPrice.text = cart.contentPrice.toString()
 
                 root.setOnClickListener {
-                    onClick(content)
+                    onClick(cart)
 //                    val intent = Intent(root.context, DetailActivity::class.java)
 //                    intent.putExtra(DetailActivity.EXTRA_CONTENT_ID, content.content_id)
 //                    it.context.startActivity(intent)
@@ -52,17 +52,17 @@ class HomeAdapter (
 
         companion object {
 
-            val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Content>() {
+            val DIFF_CALLBACK_CART = object : DiffUtil.ItemCallback<Cart>() {
                 override fun areItemsTheSame(
-                    oldItem: Content,
-                    newItem: Content
+                    oldItem: Cart,
+                    newItem: Cart
                 ): Boolean {
-                    return oldItem.content_name == newItem.content_name
+                    return oldItem.contentName == newItem.contentName
                 }
 
                 override fun areContentsTheSame(
-                    oldItem: Content,
-                    newItem: Content
+                    oldItem: Cart,
+                    newItem: Cart
                 ): Boolean {
                     return oldItem == newItem
                 }

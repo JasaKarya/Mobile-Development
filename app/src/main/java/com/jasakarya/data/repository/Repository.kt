@@ -2,6 +2,7 @@ package com.jasakarya.data.repository
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -13,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.jasakarya.data.model.Biodata
+import com.jasakarya.data.model.Cart
 import com.jasakarya.data.model.Content
 import com.jasakarya.data.model.Talent
 import com.jasakarya.data.model.User
@@ -23,7 +25,7 @@ class Repository (private val apiServices: ApiServices, private val context: Con
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private lateinit var database: DatabaseReference
 
-    val userLiveData: MutableLiveData<FirebaseUser?> = MutableLiveData()
+    val firebaseUserLiveData: MutableLiveData<FirebaseUser?> = MutableLiveData()
 
     val loggedOutLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -39,10 +41,23 @@ class Repository (private val apiServices: ApiServices, private val context: Con
 
     val talentLiveData = MutableLiveData<Talent?>()
 
+    val cartPushSuccesss = MutableLiveData<Boolean>()
+
+    val cartsLiveData = MutableLiveData<List<Cart>>()
+
+    val cartDeleteSuccessLiveData = MutableLiveData<Boolean>()
+
+    val userLiveData = MutableLiveData<User?>()
+
+    val updatePreferredCategoriesStatus = MutableLiveData<Boolean>()
+
+    val userPreferredStatus = MutableLiveData<Boolean>()
+
+
 
     init{
         if(firebaseAuth.currentUser != null){
-            userLiveData.postValue(firebaseAuth.currentUser)
+            firebaseUserLiveData.postValue(firebaseAuth.currentUser)
             loggedOutLiveData.postValue(false)
             database = Firebase.database.reference
         }
@@ -52,17 +67,17 @@ class Repository (private val apiServices: ApiServices, private val context: Con
         firebaseAuth.createUserWithEmailAndPassword(user.email, user.password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    userLiveData.postValue(firebaseAuth.currentUser)
+                    firebaseUserLiveData.postValue(firebaseAuth.currentUser)
                 } else {
                     //post value error
-                    userLiveData.postValue(null)
+                    firebaseUserLiveData.postValue(null)
                     Log.d("Register", "register: ${task.exception?.message}")
 
                 }
             }
         database.child("users").push().setValue(user)
-            .addOnSuccessListener { userLiveData.postValue(firebaseAuth.currentUser)  }
-            .addOnFailureListener { userLiveData.postValue(null) }
+            .addOnSuccessListener { firebaseUserLiveData.postValue(firebaseAuth.currentUser)  }
+            .addOnFailureListener { firebaseUserLiveData.postValue(null) }
     }
 
 
@@ -70,9 +85,9 @@ class Repository (private val apiServices: ApiServices, private val context: Con
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    userLiveData.postValue(firebaseAuth.currentUser)
+                    firebaseUserLiveData.postValue(firebaseAuth.currentUser)
                 } else {
-                    userLiveData.postValue(null)
+                    firebaseUserLiveData.postValue(null)
                 }
             }
     }
@@ -229,5 +244,102 @@ class Repository (private val apiServices: ApiServices, private val context: Con
             }
         })
     }
+
+    suspend fun addCart(cart: Cart){
+        database.child("carts").push().setValue(cart)
+            .addOnSuccessListener { cartPushSuccesss.postValue(true) }
+            .addOnFailureListener { cartPushSuccesss.postValue(false) }
+    }
+
+    suspend fun fetchCartsByUserEmail(userEmail: String) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("carts")
+        databaseReference.orderByChild("userEmail").equalTo(userEmail)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val carts = dataSnapshot.children.mapNotNull { it.getValue(Cart::class.java) }
+                    cartsLiveData.postValue(carts)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    cartsLiveData.postValue(emptyList())
+                }
+            })
+    }
+
+    suspend fun deleteCartByCartId(cartId: String) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("carts").child(cartId)
+        databaseReference.removeValue()
+            .addOnSuccessListener {
+                cartDeleteSuccessLiveData.postValue(true)
+            }
+            .addOnFailureListener {
+                cartDeleteSuccessLiveData.postValue(false)
+            }
+    }
+
+    fun fetchUserByEmail(userEmail: String) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("users")
+        databaseReference.orderByChild("email").equalTo(userEmail)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val user = snapshot.children.first().getValue(User::class.java)
+                        userLiveData.postValue(user)
+                    } else {
+                        userLiveData.postValue(null)
+
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    userLiveData.postValue(null)
+                }
+            })
+    }
+    fun updatePreferredCategories(userEmail: String, categories: List<String>) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("users")
+        databaseReference.child("users").orderByChild("email").equalTo(userEmail).limitToFirst(1)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val userKey = snapshot.children.first().key
+                        userKey?.let {
+                            databaseReference.child("users").child(it).child("preferredCategories").setValue(categories)
+                                .addOnSuccessListener { updatePreferredCategoriesStatus.postValue(true) }
+                                .addOnFailureListener { updatePreferredCategoriesStatus.postValue(false) }
+                        }
+                    } else {
+                        updatePreferredCategoriesStatus.postValue(false)
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    updatePreferredCategoriesStatus.postValue(false)
+                }
+            })
+    }
+
+
+
+    fun checkIfUserPreferred(userEmail: String) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("users")
+        databaseReference.child("users").orderByChild("email").equalTo(userEmail)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val user = snapshot.children.first().getValue(User::class.java)
+                        userPreferredStatus.postValue(user?.preferredCategories?.isNotEmpty() == true)
+                    } else {
+                        userPreferredStatus.postValue(false)
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    userPreferredStatus.postValue(false)
+                }
+            })
+    }
+
+
 
 }

@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: Repository): ViewModel(){
 
-    val userLiveData = repository.userLiveData
+    val userLiveData = repository.firebaseUserLiveData
     val loggedOutLiveData = repository.loggedOutLiveData
 
     fun login(email: String, password: String){

@@ -11,7 +11,9 @@ import com.jasakarya.R
 import com.jasakarya.databinding.ActivityHomeBinding
 import com.jasakarya.di.ViewModelFactory
 import com.jasakarya.ui.auth.login.LoginViewModel
+import com.jasakarya.ui.cart.CartActivity
 import com.jasakarya.ui.detail.DetailActivity
+import com.jasakarya.ui.profile.ProfileActivity
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -43,6 +45,16 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
+        binding.ibProfile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.ibCart.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.chip_relevant -> {
@@ -51,10 +63,10 @@ class HomeActivity : AppCompatActivity() {
                 R.id.chip_populer -> {
 
                 }
-                R.id.chip_terlaris -> {
+                R.id.chip_semua -> {
 
                 }
-                R.id.chip_terdekat -> {
+                R.id.chip_explore -> {
 
                 }
             }

@@ -1,6 +1,6 @@
 package com.jasakarya.ui.detail
 
-import android.animation.LayoutTransition
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Spannable
@@ -8,22 +8,24 @@ import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.BulletSpan
-import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.text.bold
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.jasakarya.R
+import com.jasakarya.data.model.Cart
 import com.jasakarya.data.model.Content
 //import com.jasakarya.data.model.DummyListTalent
 //import com.jasakarya.data.model.OrderPackage
-import com.jasakarya.data.model.Profile
-import com.jasakarya.data.model.Talent
 import com.jasakarya.databinding.ActivityDetailBinding
 import com.jasakarya.di.ViewModelFactory
-import com.jasakarya.ui.profile.ProfileAdapter
+import com.jasakarya.ui.cart.CartActivity
+import java.util.Calendar
+
+//import com.jasakarya.ui.home.ProfileAdapter
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
@@ -32,14 +34,14 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var ilustartorDescText: String
     private lateinit var ilustartorDesc: TextView
     private var isFavorite = false
-    private  var talent: Content? = null
+    private  var content: Content? = null
+
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     private lateinit var factory : ViewModelFactory
     private val viewModel: DetailViewModel by viewModels {factory}
 
-    var package1Selected = true
-    var package2Selected = false
-    var package3Selected = false
+    var selectedPackage = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +86,55 @@ class DetailActivity : AppCompatActivity() {
                 tvIlustratorName.text = talent?.talent_name
                 tvIlustratorDesc.text = talent?.talent_brief
                 tvRateIlustrator.text = talent?.avg_rating.toString()
+
+                content = talent?.content
+
+
             }
+        }
+
+        binding.btnOrder.setOnClickListener {
+            val yearNow = Calendar.getInstance().get(Calendar.YEAR)
+            val monthNow = Calendar.getInstance().get(Calendar.MONTH)
+            val dayNow = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+            val hourNow = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+            val minuteNow = Calendar.getInstance().get(Calendar.MINUTE)
+            val secondNow = Calendar.getInstance().get(Calendar.SECOND)
+
+            val contentId = content?.content_id
+            val userEmail = firebaseAuth.currentUser?.email
+            val contentName = content?.content_name
+            val contentPackage = content?.packages?.get(selectedPackage)
+            val contentPrice = contentPackage?.package_price
+            val note = binding.tfEditNote.text.toString()
+
+            val cartId = "$userEmail$contentId-$yearNow$monthNow$dayNow$hourNow$minuteNow$secondNow"
+
+            val cart = Cart(
+                cartId = cartId,
+                userEmail = userEmail!!,
+                contentId = contentId.toString(),
+                contentName = contentName!!,
+                selectedPackage = contentPackage!!,
+                contentPrice = contentPrice!!,
+                note = note,
+                imgUrl = content?.image_url.toString()
+            )
+
+            viewModel.pushCart(cart)
+            viewModel.cartPushSuccess.observe(this) { cartPushSuccess ->
+                if (cartPushSuccess){
+                    val intent = Intent(this, CartActivity::class.java)
+                    startActivity(intent)
+                    Toast.makeText(this, "Order Success", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Toast.makeText(this, "Order Failed", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+
+
         }
 
         descriptionText = getString(R.string.detail_description)
@@ -130,9 +180,9 @@ class DetailActivity : AppCompatActivity() {
 //            tvBulletspanCardview2.text = convertToBulletList(listOfBenefit)
 //            tvBulletspanCardview3.text = convertToBulletList(listOfBenefit)
 //        }
-        val adapterProfile = ProfileAdapter(onClick = { service ->
-
-        })
+//        val adapterProfile = ProfileAdapter(onClick = { service ->
+//
+//        })
 
 //        binding.apply {
 //            with(rvStackedProfile) {
@@ -302,9 +352,7 @@ class DetailActivity : AppCompatActivity() {
         binding.btnPackage3.setTextColor(ContextCompat.getColor(this, R.color.blue))
 
         binding.btnPackage1.setOnClickListener {
-            package1Selected = true
-            package2Selected = false
-            package3Selected = false
+            selectedPackage = 0
             binding.btnPackage1.background = ContextCompat.getDrawable(this, R.drawable.button_primary)
             binding.btnPackage2.background = ContextCompat.getDrawable(this, R.drawable.button_secondary)
             binding.btnPackage3.background = ContextCompat.getDrawable(this, R.drawable.button_secondary)
@@ -313,9 +361,7 @@ class DetailActivity : AppCompatActivity() {
             binding.btnPackage3.setTextColor(ContextCompat.getColor(this, R.color.blue))
         }
         binding.btnPackage2.setOnClickListener {
-            package1Selected = false
-            package2Selected = true
-            package3Selected = false
+            selectedPackage = 1
             binding.btnPackage1.background = ContextCompat.getDrawable(this, R.drawable.button_secondary)
             binding.btnPackage2.background = ContextCompat.getDrawable(this, R.drawable.button_primary)
             binding.btnPackage3.background = ContextCompat.getDrawable(this, R.drawable.button_secondary)
@@ -324,9 +370,7 @@ class DetailActivity : AppCompatActivity() {
             binding.btnPackage3.setTextColor(ContextCompat.getColor(this, R.color.blue))
         }
         binding.btnPackage3.setOnClickListener {
-            package1Selected = false
-            package2Selected = false
-            package3Selected = true
+            selectedPackage = 2
             binding.btnPackage1.background = ContextCompat.getDrawable(this, R.drawable.button_secondary)
             binding.btnPackage2.background = ContextCompat.getDrawable(this, R.drawable.button_secondary)
             binding.btnPackage3.background = ContextCompat.getDrawable(this, R.drawable.button_primary)
