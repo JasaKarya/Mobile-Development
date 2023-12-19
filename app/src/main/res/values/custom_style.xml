@@ -9,4 +9,7 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="CornerCutReview">
+        <item name="cornerSize">6%</item>
+    </style>
 </resources>
