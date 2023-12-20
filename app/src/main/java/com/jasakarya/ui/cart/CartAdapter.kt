@@ -11,6 +11,8 @@ import com.jasakarya.data.model.Content
 import com.jasakarya.databinding.ItemCartUserBinding
 import com.jasakarya.databinding.ItemRowServiceBinding
 import com.jasakarya.ui.cart.CartAdapter.MyViewHolder.Companion.DIFF_CALLBACK_CART
+import java.text.NumberFormat
+import java.util.Locale
 
 class CartAdapter (
     private val onClick: (Cart) -> Unit
@@ -38,7 +40,8 @@ class CartAdapter (
                     .into(ivProduct)
                 nameProduct.text = cart.contentName
                 tvCategory.text = cart.selectedPackage.package_name
-                tvPrice.text = cart.contentPrice.toString()
+                val format = NumberFormat.getNumberInstance(Locale.GERMAN).format(cart.contentPrice)
+                tvPrice.text = "Rp. $format"
 
                 root.setOnClickListener {
                     onClick(cart)
