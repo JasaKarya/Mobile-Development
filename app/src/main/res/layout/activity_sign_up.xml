@@ -118,6 +118,7 @@
         style="@style/Widget.Design.TextInputLayout"
         app:boxBackgroundMode="none"
         android:hint="@string/text_email"
+        android:inputType="textEmailAddress"
         app:layout_constraintStart_toEndOf="@id/iv_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tfLayout_username">
@@ -125,7 +126,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tfEdit_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,6 +156,7 @@
         style="@style/Widget.Design.TextInputLayout"
         app:boxBackgroundMode="none"
         android:hint="@string/text_password"
+        android:inputType="textPassword"
         app:layout_constraintStart_toEndOf="@id/iv_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tfLayout_email">
@@ -275,8 +278,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tfEdit_location"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

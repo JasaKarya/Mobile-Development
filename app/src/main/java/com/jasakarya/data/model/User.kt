@@ -2,7 +2,6 @@ package com.jasakarya.data.model
 
 data class User(
     val username: String = "",
-    val password: String = "",
     val email: String = "",
     val full_name: String = "",
     val gender: String = "",

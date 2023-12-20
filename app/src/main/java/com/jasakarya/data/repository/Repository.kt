@@ -51,33 +51,36 @@ class Repository (private val apiServices: ApiServices, private val context: Con
 
     val updatePreferredCategoriesStatus = MutableLiveData<Boolean>()
 
-    val userPreferredStatus = MutableLiveData<Boolean>()
 
 
 
     init{
+        database = Firebase.database.reference
         if(firebaseAuth.currentUser != null){
             firebaseUserLiveData.postValue(firebaseAuth.currentUser)
             loggedOutLiveData.postValue(false)
-            database = Firebase.database.reference
         }
     }
 
-    fun register(user: User) {
-        firebaseAuth.createUserWithEmailAndPassword(user.email, user.password)
+    fun register(user: User, textPassword: String) {
+        database = Firebase.database.reference
+        firebaseAuth.createUserWithEmailAndPassword(user.email, textPassword)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     firebaseUserLiveData.postValue(firebaseAuth.currentUser)
+                    Log.d("FirebaseRegister", "register: ${firebaseAuth.currentUser?.uid}")
                 } else {
                     //post value error
                     firebaseUserLiveData.postValue(null)
-                    Log.d("Register", "register: ${task.exception?.message}")
+                    Toast.makeText(context, task.exception.toString(), Toast.LENGTH_SHORT).show()
 
                 }
             }
         database.child("users").push().setValue(user)
             .addOnSuccessListener { firebaseUserLiveData.postValue(firebaseAuth.currentUser)  }
-            .addOnFailureListener { firebaseUserLiveData.postValue(null) }
+            .addOnFailureListener {
+                Log.d("FirebaseRegister", "register: ${it.message}")
+                firebaseUserLiveData.postValue(null) }
     }
 
 
@@ -298,13 +301,13 @@ class Repository (private val apiServices: ApiServices, private val context: Con
     }
     fun updatePreferredCategories(userEmail: String, categories: List<String>) {
         val databaseReference = FirebaseDatabase.getInstance().getReference("users")
-        databaseReference.child("users").orderByChild("email").equalTo(userEmail).limitToFirst(1)
+        databaseReference.orderByChild("email").equalTo(userEmail)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         val userKey = snapshot.children.first().key
                         userKey?.let {
-                            databaseReference.child("users").child(it).child("preferredCategories").setValue(categories)
+                            databaseReference.child(it).child("preferredCategories").setValue(categories)
                                 .addOnSuccessListener { updatePreferredCategoriesStatus.postValue(true) }
                                 .addOnFailureListener { updatePreferredCategoriesStatus.postValue(false) }
                         }
@@ -323,19 +326,19 @@ class Repository (private val apiServices: ApiServices, private val context: Con
 
     fun checkIfUserPreferred(userEmail: String) {
         val databaseReference = FirebaseDatabase.getInstance().getReference("users")
-        databaseReference.child("users").orderByChild("email").equalTo(userEmail)
+        databaseReference.orderByChild("email").equalTo(userEmail)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         val user = snapshot.children.first().getValue(User::class.java)
-                        userPreferredStatus.postValue(user?.preferredCategories?.isNotEmpty() == true)
+                        userHasPreferencesLiveData.postValue(user?.preferredCategories?.isNotEmpty() == true)
                     } else {
-                        userPreferredStatus.postValue(false)
+                        userHasPreferencesLiveData.postValue(false)
                     }
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
-                    userPreferredStatus.postValue(false)
+                    userHasPreferencesLiveData.postValue(false)
                 }
             })
     }

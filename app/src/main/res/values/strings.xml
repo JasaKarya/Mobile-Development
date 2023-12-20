@@ -68,7 +68,7 @@
     <string name="text_signup">Daftar</string>
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</string>
-    <string name="choose_category_text">Pilih kategori yang kamu suka...</string>
+    <string name="choose_category_text">Pilih 3 kategori yang kamu suka...</string>
     <string name="brochure">Brosur</string>
     <string name="poster">Poster</string>
     <string name="merchandise">Merchandise</string>
@@ -79,7 +79,7 @@
     <string name="ui_ux_design">UI / UX Design</string>
     <string name="ilustrastion">Ilustrasi</string>
     <string name="copy_writing">Copywriting</string>
-    <string name="next_to_home_text">Lanjut Gak sihh...</string>
+    <string name="next_to_home_text">Simpan Preferensi</string>
     <string name="tv_checkout">Checkout</string>
     <string name="tv_metode_pembayaran">Metode Pembayaran :</string>
     <string name="tv_keranjang">Keranjang</string>
@@ -111,6 +111,13 @@
     <string name="value_jeniskelamin">Laki-laki</string>
     <string name="alamat">Alamat :</string>
     <string name="value_alamat">Jl. Rumah Belok Simpang Dua</string>
+    <string name="fotovideografi">Foto/Videografi</string>
+    <string name="desain_ilustrasi">Desain Grafis</string>
+    <string name="kontenmedsos">Konten Media Sosial</string>
+    <string name="animasi">3D dan Animasi</string>
+    <string name="musiksuara">Musik dan Sound</string>
+    <string name="penulisankreatif">Penulisan Kreatif</string>
+    <string name="pemasaraninternet">Pemasaran Internet</string>
 
 
 </resources>

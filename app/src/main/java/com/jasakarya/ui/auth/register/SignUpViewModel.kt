@@ -8,12 +8,12 @@ import kotlinx.coroutines.launch
 
 class SignUpViewModel(private val repository: Repository): ViewModel(){
 
-    val userLiveData = repository.userLiveData
+    val userLiveData = repository.firebaseUserLiveData
     val loggedOutLiveData = repository.loggedOutLiveData
 
-    fun register(user: User){
+    fun register(user: User, textPassword: String){
         viewModelScope.launch {
-            repository.register(user)
+            repository.register(user,textPassword)
         }
     }
 

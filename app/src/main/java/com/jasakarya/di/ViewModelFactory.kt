@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.jasakarya.data.repository.Repository
+import com.jasakarya.ui.auth.category.CategoryViewModel
 import com.jasakarya.ui.auth.login.LoginViewModel
 import com.jasakarya.ui.auth.register.SignUpViewModel
 import com.jasakarya.ui.cart.CartViewModel
@@ -34,6 +35,9 @@ class ViewModelFactory private constructor(private val repository: Repository) :
                 }
                 modelClass.isAssignableFrom(CartViewModel::class.java) -> {
                     return CartViewModel(repository) as T
+                }
+                modelClass.isAssignableFrom(CategoryViewModel::class.java) -> {
+                    return CategoryViewModel(repository) as T
                 }
                 else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
             }

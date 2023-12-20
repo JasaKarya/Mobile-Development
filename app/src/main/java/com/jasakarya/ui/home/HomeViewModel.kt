@@ -16,6 +16,10 @@ class HomeViewModel(private val repository: Repository): ViewModel(){
 
     val preferenceCreated = repository.preferenceCreatedLiveData
 
+    val userSetPreference = repository.userHasPreferencesLiveData
+
+    val userLiveData = repository.userLiveData
+
     fun getContents(limit: Int) {
         viewModelScope.launch {
             repository.fetchContents(limit)
@@ -34,15 +38,17 @@ class HomeViewModel(private val repository: Repository): ViewModel(){
         }
     }
 
-    fun getUserHasPreferences(email: String) {
+
+
+    fun checkIfUserPreferred(email: String) {
         viewModelScope.launch {
-            repository.checkUserPreference(email)
+            repository.checkIfUserPreferred(email)
         }
     }
 
-    fun createPreference(userEmail: String, preferences: Map<String, Int>) {
+    fun getUser(email: String) {
         viewModelScope.launch {
-            repository.createUserPreference(userEmail, preferences)
+            repository.fetchUserByEmail(email)
         }
     }
 

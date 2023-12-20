@@ -13,6 +13,7 @@ import androidx.core.widget.doOnTextChanged
 import com.jasakarya.R
 import com.jasakarya.databinding.ActivityLoginBinding
 import com.jasakarya.di.ViewModelFactory
+import com.jasakarya.ui.auth.category.CategoryActivity
 import com.jasakarya.ui.auth.register.SignUpActivity
 import com.jasakarya.ui.home.HomeActivity
 
@@ -34,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
             viewModel.logout()
         }
         catch(e: Exception){
-            e.printStackTrace()
+            Toast.makeText(this, "Logout Failed: error ${e}", Toast.LENGTH_SHORT).show()
         }
 
         binding.btnRegister.setOnClickListener{
@@ -55,9 +56,24 @@ class LoginActivity : AppCompatActivity() {
             viewModel.userLiveData.observe(this) {
                 if (it != null) {
                     Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
-//                Toast.makeText(this, "Welcome ${it.email}", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    finish()
+                    viewModel.checkUserHasPreference(it.email.toString())
+                    viewModel.userHasPreference.observe(this) { userHasPreferences ->
+                        if (!userHasPreferences) {
+                            val intent = Intent(this, CategoryActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                            finish()
+                        }
+                        else{
+                            val intent = Intent(this, HomeActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
+
+
+
 
                 }
                 else{
@@ -66,13 +82,6 @@ class LoginActivity : AppCompatActivity() {
             }
 
         }
-
-
-
-
-
-
-
 
         binding.ibBack.visibility = android.view.View.GONE
         binding.btnLogin.isEnabled = false

@@ -12,6 +12,8 @@ class LoginViewModel(private val repository: Repository): ViewModel(){
     val userLiveData = repository.firebaseUserLiveData
     val loggedOutLiveData = repository.loggedOutLiveData
 
+    val userHasPreference = repository.userHasPreferencesLiveData
+
     fun login(email: String, password: String){
         viewModelScope.launch {
             repository.login(email, password)
@@ -21,6 +23,12 @@ class LoginViewModel(private val repository: Repository): ViewModel(){
     fun logout(){
         viewModelScope.launch {
             repository.logout()
+        }
+    }
+
+    fun checkUserHasPreference(email: String){
+        viewModelScope.launch {
+            repository.checkIfUserPreferred(email)
         }
     }
 

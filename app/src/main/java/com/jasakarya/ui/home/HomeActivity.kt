@@ -6,10 +6,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.jasakarya.R
 //import com.jasakarya.data.model.DummyListTalent
 import com.jasakarya.databinding.ActivityHomeBinding
 import com.jasakarya.di.ViewModelFactory
+import com.jasakarya.ui.auth.category.CategoryActivity
 import com.jasakarya.ui.auth.login.LoginViewModel
 import com.jasakarya.ui.cart.CartActivity
 import com.jasakarya.ui.detail.DetailActivity
@@ -20,12 +22,24 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var factory: ViewModelFactory
     private val viewModel: HomeViewModel by viewModels {factory}
 
+    private var listPreference = listOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         factory = ViewModelFactory.getInstance(this)
+
+        val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+        val userEmail = firebaseAuth.currentUser?.email.toString()
+
+        viewModel.getUser(userEmail)
+        viewModel.userLiveData.observe(this) { user ->
+            listPreference = user?.preferredCategories!!
+        }
+
+
 
         viewModel.getContents(30)
         viewModel.contents.observe(this) { contents ->
@@ -60,18 +74,20 @@ class HomeActivity : AppCompatActivity() {
                 R.id.chip_relevant -> {
 
                 }
+
                 R.id.chip_populer -> {
 
                 }
+
                 R.id.chip_semua -> {
 
                 }
+
                 R.id.chip_explore -> {
 
                 }
             }
         }
-
 
 
 

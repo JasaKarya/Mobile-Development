@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.AdapterView
@@ -54,17 +55,19 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.btnSignUp.setOnClickListener {
-            val textUsername = binding.tfEditUsername?.text?.trim().toString()
-            val textEmail = binding.tfEditEmail?.text?.trim().toString()
-            val textPassword = binding.tfEditPassword?.text?.trim().toString()
-            val textFullName = binding.tfEditFullname?.text?.trim().toString()
-            val textLocation = binding.tfEditLocation?.text?.trim().toString()
-            val user = User(textUsername,textPassword,textEmail,textFullName,gender,date,textLocation)
+            val textUsername = binding.tfEditUsername.text?.trim().toString()
+            val textEmail = binding.tfEditEmail.text?.trim().toString()
+            val textPassword = binding.tfEditPassword.text?.trim().toString()
+            val textFullName = binding.tfEditFullname.text?.trim().toString()
+            val textLocation = binding.tfEditLocation.text?.trim().toString()
+            val preference = mutableListOf<String>()
+
+            val user = User(textUsername,textEmail,textFullName,gender,date,textLocation, preference)
             try{
-                viewModel.register(user)
+                viewModel.register(user,textPassword)
             }
             catch(e: Exception){
-                e.printStackTrace()
+                Log.d("SignUpActivity", "onCreate: ${e}")
             }
 
             viewModel.userLiveData.observe(this) {
@@ -182,6 +185,7 @@ class SignUpActivity : AppCompatActivity() {
                             if(date != nullDate){
                                 binding.btnSignUp.isEnabled = true
                                 binding.btnSignUp.error = null
+                                binding.btnDateofbirth.error = null
                             }
                             else{
                                 binding.btnDateofbirth.error = "Tanggal lahir tidak boleh kosong!"
