@@ -1,5 +1,6 @@
 package com.jasakarya.ui.cart
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -32,6 +33,9 @@ class CartActivity : AppCompatActivity() {
 //                val intent = DetailActivity.newIntent(this, content.content_id)
 //                startActivity(intent)
             })
+            binding.ibBack.setOnClickListener {
+                finish()
+            }
 
             binding.apply {
                 with(rvCart) {

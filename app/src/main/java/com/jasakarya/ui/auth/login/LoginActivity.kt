@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -100,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
                 R.drawable.visible
             )
         } else {
-            editText.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            editText.transformationMethod = PasswordTransformationMethod.getInstance()
             textInput.endIconDrawable = ContextCompat.getDrawable(
                 textInput.context,
                 R.drawable.invisible_1
