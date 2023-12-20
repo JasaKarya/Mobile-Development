@@ -42,6 +42,8 @@ class PaymentActivity : AppCompatActivity() {
             tvTotalHarga.text = "Rp. $selectedPrice"
         }
 
+        binding.ibBack.setOnClickListener { finish() }
+
         binding.btnPay.setOnClickListener {
             val intent = Intent(this, MethodPaymentActivity::class.java)
             intent.putExtra("contentId", contentId)
