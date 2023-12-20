@@ -18,6 +18,7 @@ class MethodPaymentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMethodPaymentBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         factory = ViewModelFactory.getInstance(this)
 
         binding.cvGopay.setOnClickListener {
