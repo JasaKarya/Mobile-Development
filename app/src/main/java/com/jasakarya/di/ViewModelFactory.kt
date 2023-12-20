@@ -10,6 +10,7 @@ import com.jasakarya.ui.auth.register.SignUpViewModel
 import com.jasakarya.ui.cart.CartViewModel
 import com.jasakarya.ui.detail.DetailViewModel
 import com.jasakarya.ui.home.HomeViewModel
+import com.jasakarya.ui.payment.PaymentViewModel
 import com.jasakarya.ui.profile.ProfileViewModel
 
 class ViewModelFactory private constructor(private val repository: Repository) :
@@ -38,6 +39,9 @@ class ViewModelFactory private constructor(private val repository: Repository) :
                 }
                 modelClass.isAssignableFrom(CategoryViewModel::class.java) -> {
                     return CategoryViewModel(repository) as T
+                }
+                modelClass.isAssignableFrom(PaymentViewModel::class.java) -> {
+                    return PaymentViewModel(repository) as T
                 }
                 else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
             }

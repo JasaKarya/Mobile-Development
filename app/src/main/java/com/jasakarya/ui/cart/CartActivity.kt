@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.jasakarya.databinding.ActivityCartBinding
 import com.jasakarya.di.ViewModelFactory
 import com.jasakarya.ui.detail.DetailActivity
+import com.jasakarya.ui.payment.PaymentActivity
 
 class CartActivity : AppCompatActivity() {
 
@@ -30,8 +31,14 @@ class CartActivity : AppCompatActivity() {
 
         viewModel.carts.observe(this) { carts ->
             val cartAdapter = CartAdapter(onClick = { content ->
-//                val intent = DetailActivity.newIntent(this, content.content_id)
-//                startActivity(intent)
+                val intent = Intent(this, PaymentActivity::class.java)
+                intent.putExtra("contentId", content.contentId)
+                intent.putExtra("imgUrl", content.imgUrl)
+                intent.putExtra("contentName", content.contentName)
+                intent.putExtra("selectedPackage", content.selectedPackage.package_name)
+                intent.putExtra("selectedPrice", content.selectedPackage.package_price)
+                intent.putExtra("note", content.note)
+                startActivity(intent)
             })
             binding.ibBack.setOnClickListener {
                 finish()
