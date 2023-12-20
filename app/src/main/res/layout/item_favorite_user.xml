@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view_user"
     style="@style/Widget.Material3.CardView.Elevated"
-    android:layout_width="345dp"
-    android:layout_height="115dp"
-    android:layout_marginStart="32dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
     android:layout_marginTop="10dp"
-    android:layout_marginEnd="32dp"
+    android:layout_marginEnd="16dp"
     app:cardBackgroundColor="#14255D"
     app:cardElevation="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_product"
@@ -41,10 +41,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="5dp"
+            android:maxLines="2"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/name_product"
             android:textColor="@color/white"
             android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_category"
             app:layout_constraintStart_toEndOf="@id/cv_product"
             app:layout_constraintTop_toTopOf="@id/cv_product" />
 
@@ -54,10 +58,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="3dp"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/tv_category"
             android:textColor="@color/white"
+            android:maxLength="25"
             android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_price"
             app:layout_constraintStart_toEndOf="@id/cv_product"
             app:layout_constraintTop_toBottomOf="@id/name_product" />
 
@@ -67,25 +75,28 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/tv_price"
             android:textColor="@color/white"
             android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/cv_product"
             app:layout_constraintTop_toBottomOf="@id/tv_category" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_favorite"
+            android:id="@+id/btn_delete"
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/white"
-            android:contentDescription="@string/btn_fav"
+            android:contentDescription="@string/btn_addcart"
             app:icon="@drawable/ic_heart_fill"
-            app:iconTint="#ea4335"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:iconTint="@color/red"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_price"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/tv_price" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

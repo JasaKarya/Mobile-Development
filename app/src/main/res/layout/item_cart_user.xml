@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/name_product"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -48,16 +48,13 @@
             android:text="@string/name_product"
             android:textColor="@color/white"
             android:textSize="14sp"
-
             app:layout_constraintBottom_toTopOf="@+id/tv_category"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/cv_product"
             app:layout_constraintTop_toTopOf="@id/cv_product" />
 
         <TextView
             android:id="@+id/tv_category"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
@@ -66,10 +63,9 @@
             android:fontFamily="@font/poppins_regular"
             android:text="@string/tv_category"
             android:textColor="@color/white"
+            android:maxLength="25"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_price"
-            app:layout_constraintEnd_toStartOf="@+id/btn_delete"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/cv_product"
             app:layout_constraintTop_toBottomOf="@id/name_product" />
 
@@ -93,17 +89,14 @@
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="117dp"
+            android:layout_marginStart="120dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/white"
             android:contentDescription="@string/btn_addcart"
             app:icon="@drawable/ic_delete"
             app:iconTint="@color/red"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_price"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toEndOf="@+id/tv_price"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.84000003" />
+            app:layout_constraintStart_toEndOf="@+id/tv_price" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
