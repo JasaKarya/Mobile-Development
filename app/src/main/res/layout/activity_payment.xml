@@ -48,11 +48,11 @@
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Elevated"
         android:id="@+id/card_view_user"
-        android:layout_width="345dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="34dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="34dp"
+        android:layout_marginEnd="20dp"
         app:cardElevation="10dp"
         app:cardBackgroundColor="#14255D"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_product"
@@ -88,10 +88,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
+                android:maxLines="2"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="@string/name_product"
                 android:textColor="@color/white"
                 android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_category"
                 app:layout_constraintStart_toEndOf="@id/cv_product"
                 app:layout_constraintTop_toTopOf="@id/cv_product" />
 
@@ -101,10 +105,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="3dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/tv_category"
                 android:textColor="@color/white"
                 android:textSize="14sp"
+                android:maxLength="25"
+                app:layout_constraintBottom_toTopOf="@+id/tv_price"
                 app:layout_constraintStart_toEndOf="@id/cv_product"
                 app:layout_constraintTop_toBottomOf="@id/name_product" />
 
@@ -114,10 +122,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/tv_price"
                 android:textColor="@color/white"
                 android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/cv_product"
                 app:layout_constraintTop_toBottomOf="@id/tv_category" />
 
@@ -126,6 +136,8 @@
                 style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="#34A853"
                 android:contentDescription="@string/btn_check"
@@ -133,7 +145,7 @@
                 app:iconTint="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/tv_price" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
