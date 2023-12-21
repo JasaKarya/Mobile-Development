@@ -18,3 +18,11 @@
 
 ## Opening This Project
 
+These instructions will guide you through the process of setting up and running the Mobile Development project.
+
+Clone the repository:
+'git clone git@github.com:JasaKarya/Mobile-Development.git'
+
+Navigate to the project directory:
+'cd Mobile-Development'
+
