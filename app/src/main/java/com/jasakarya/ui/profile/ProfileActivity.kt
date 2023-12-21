@@ -35,7 +35,7 @@ class ProfileActivity : AppCompatActivity() {
                 val birthDay = user?.date_of_birth?.day.toString()
                 val birthDateString = "$birthDay-$birthMonth-$birthYear"
                 tvTanggallahir.text = birthDateString
-                tvJk.text = user?.gender
+                tvJeniskelamin.text = user?.gender
                 tvAddress.text = user?.location
             }
         }
