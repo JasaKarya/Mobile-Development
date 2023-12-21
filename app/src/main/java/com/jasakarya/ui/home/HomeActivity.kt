@@ -36,7 +36,9 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel.getUser(userEmail)
         viewModel.userLiveData.observe(this) { user ->
-            listPreference = user?.preferredCategories!!
+            if (user != null){
+                listPreference = user.preferredCategories
+            }
         }
 
 
