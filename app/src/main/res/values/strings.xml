@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Jasa Karya</string>
+    <string name="app_name">JasaKarya</string>
 
     <string name="sign_up">Sign Up</string>
     <string name="text_choose_package">Pilih Paket yang diinginkan :</string>
@@ -119,6 +119,18 @@
     <string name="penulisankreatif">Penulisan Kreatif</string>
     <string name="pemasaraninternet">Pemasaran Internet</string>
     <string name="tv_note">Catatan</string>
+    <string name="btn_bayar">Bayar</string>
+    <string name="tv_transaksi">Transaksi</string>
+    <string name="tv_tanggal_pemesanan">Tanggal Pesan:</string>
+    <string name="tv_tanggal">1/1/1970 06:30</string>
+    <string name="tv_email_customer">Email Customer:</string>
+    <string name="tv_id_transaksi">No Transaksi:</string>
+    <string name="tv_id">emailemail@gmail.com-6-010119700630</string>
+    <string name="tv_metode">Dana</string>
+    <string name="tv_note_detail">"Lorem ipsum dolor sit amet adipiscing elit lorem lorem ipsum ipsum "</string>
+    <string name="btn_selesai">Selesai\n</string>
+    <string name="btn_pesanan_selesai">Lihat Pesanan Selesai</string>
+    <string name="tv_transaksi_selesai">Transaksi Selesai</string>
 
 
 </resources>

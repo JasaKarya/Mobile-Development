@@ -76,7 +76,7 @@ class SignUpActivity : AppCompatActivity() {
                     startActivity(Intent(this, LoginActivity::class.java))
                 }
                 else{
-                    Toast.makeText(this, "Register Failed", Toast.LENGTH_SHORT).show()
+
                 }
             }
 

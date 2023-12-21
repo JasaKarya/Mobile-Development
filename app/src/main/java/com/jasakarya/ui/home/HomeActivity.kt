@@ -40,6 +40,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
+        binding.chipGroup.check(R.id.chip_semua)
 
         viewModel.getContents(30)
         viewModel.contents.observe(this) { contents ->
@@ -69,18 +70,27 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.fabSearch.setOnClickListener{
+            val searchQuery = binding.searchView.query.toString().trim()
+            if(searchQuery.isNotEmpty()){
+                viewModel.searchContents(searchQuery, 30)
+                binding.chipGroup.check(R.id.chip_explore)
+            }
+
+        }
+
         binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.chip_relevant -> {
-
+                    viewModel.getFilteredContents(listPreference, 0.0, 30)
                 }
 
                 R.id.chip_populer -> {
-
+                    viewModel.getSortedContents(30)
                 }
 
                 R.id.chip_semua -> {
-
+                    viewModel.getContents(30)
                 }
 
                 R.id.chip_explore -> {

@@ -9,9 +9,17 @@ class CartViewModel(private val repository: Repository): ViewModel() {
 
     val carts = repository.cartsLiveData
 
+    val cartDeleteSuccess = repository.cartDeleteSuccessLiveData
+
     fun getCarts(userEmail: String) {
         viewModelScope.launch {
             repository.fetchCartsByUserEmail(userEmail)
+        }
+    }
+
+    fun deleteCart(cartId: String) {
+        viewModelScope.launch {
+            repository.deleteCartByCartId(cartId)
         }
     }
 }

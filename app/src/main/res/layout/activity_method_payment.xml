@@ -42,7 +42,8 @@
                 android:layout_height="42dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="12dp"
-                android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardCornerRadius="11dp"
                 app:cardElevation="12dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,11 +51,12 @@
 
                 <ImageView
                     android:id="@+id/iv_gopay"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:contentDescription="@string/iv_gopay"
-                    android:padding="10dp"
-                    android:src="@drawable/gopay" />
+                    android:padding="12dp"
+                    android:src="@drawable/gopay"
+                    />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -63,7 +65,8 @@
                 android:layout_height="42dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="12dp"
-                android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardCornerRadius="11dp"
                 app:cardElevation="12dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +87,8 @@
                 android:layout_height="42dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="12dp"
-                android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardCornerRadius="11dp"
                 app:cardElevation="12dp"
                 app:layout_constraintStart_toEndOf="@id/cv_gopay"
@@ -106,7 +110,8 @@
                 android:layout_height="42dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="12dp"
-                android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardCornerRadius="11dp"
                 app:cardElevation="12dp"
                 app:layout_constraintStart_toEndOf="@id/cv_atmbersama"
@@ -124,6 +129,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_pay"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="16dp"
@@ -131,7 +137,7 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="#279EFF"
         android:fontFamily="@font/ubuntu_medium"
-        android:text="@string/btn_pay"
+        android:text="@string/btn_bayar"
         android:textColor="@color/white"
         android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/cv_metode_pembayaran" />

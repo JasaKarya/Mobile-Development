@@ -3,7 +3,9 @@ package com.jasakarya.ui.cart
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -11,6 +13,7 @@ import com.jasakarya.databinding.ActivityCartBinding
 import com.jasakarya.di.ViewModelFactory
 import com.jasakarya.ui.detail.DetailActivity
 import com.jasakarya.ui.payment.PaymentActivity
+import com.jasakarya.ui.payment.TransactionsActivity
 
 class CartActivity : AppCompatActivity() {
 
@@ -31,14 +34,38 @@ class CartActivity : AppCompatActivity() {
 
         viewModel.carts.observe(this) { carts ->
             val cartAdapter = CartAdapter(onClick = { content ->
+
                 val intent = Intent(this, PaymentActivity::class.java)
-                intent.putExtra("contentId", content.contentId)
+                val intContentId = content.contentId.toInt()
+                intent.putExtra("contentId", intContentId)
                 intent.putExtra("imgUrl", content.imgUrl)
                 intent.putExtra("contentName", content.contentName)
                 intent.putExtra("selectedPackage", content.selectedPackage.package_name)
                 intent.putExtra("selectedPrice", content.selectedPackage.package_price)
                 intent.putExtra("note", content.note)
+
+                intent.putExtra("cartId", content.cartId)
                 startActivity(intent)
+            }
+            , onTrash = {
+                cart ->
+                val builder = AlertDialog.Builder(this)
+                builder.setMessage("Hapus Item ini Dari Keranjang?")
+                builder.setPositiveButton("Ya") { dialog, which ->
+                    viewModel.deleteCart(cart.cartId)
+                    viewModel.cartDeleteSuccess.observe(this) {
+                        if (it) {
+                            viewModel.getCarts(userEmail)
+                            Toast.makeText(this, "Item Berhasil Dihapus", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this, "Item Gagal Dihapus", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                builder.setNegativeButton("Tidak") { dialog, which ->
+                    dialog.dismiss()
+                    }
+                builder.create().show()
             })
             binding.ibBack.setOnClickListener {
                 finish()
@@ -52,6 +79,11 @@ class CartActivity : AppCompatActivity() {
                 }
                 cartAdapter.submitList(carts)
             }
+        }
+
+        binding.btnPesanan.setOnClickListener {
+            val intent = Intent(this, TransactionsActivity::class.java)
+            startActivity(intent)
         }
 
     }

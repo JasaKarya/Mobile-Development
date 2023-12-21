@@ -15,13 +15,14 @@ import java.text.NumberFormat
 import java.util.Locale
 
 class CartAdapter (
-    private val onClick: (Cart) -> Unit
+    private val onClick: (Cart) -> Unit,
+    private val onTrash: (Cart) -> Unit
 ) : ListAdapter<Cart, CartAdapter.MyViewHolder>(DIFF_CALLBACK_CART) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding =
             ItemCartUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding, onClick)
+        return MyViewHolder(binding, onClick, onTrash)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -31,7 +32,8 @@ class CartAdapter (
 
     class MyViewHolder(
         private val binding: ItemCartUserBinding,
-        private val onClick: (Cart) -> Unit
+        private val onClick: (Cart) -> Unit,
+        private val onTrash: (Cart) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(cart: Cart) {
             binding.apply {
@@ -45,11 +47,10 @@ class CartAdapter (
 
                 root.setOnClickListener {
                     onClick(cart)
-//                    val intent = Intent(root.context, DetailActivity::class.java)
-//                    intent.putExtra(DetailActivity.EXTRA_CONTENT_ID, content.content_id)
-//                    it.context.startActivity(intent)
-
                 }
+            btnDelete.setOnClickListener{
+                    onTrash(cart)
+            }
             }
         }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cart.DetailStatusActivity">
+    tools:context=".ui.payment.DetailStatusActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/ib_back"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/ubuntu_bold"
-        android:text="@string/tv_detail"
+        android:text="@string/tv_transaksi"
         android:textColor="#279EFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/ib_back"
@@ -45,347 +45,553 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Elevated"
-        android:id="@+id/card_view_user"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="34dp"
-        app:cardElevation="10dp"
-        app:cardBackgroundColor="#14255D"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_payment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_product"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="16dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_view_user"
+                style="@style/Widget.Material3.CardView.Elevated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="34dp"
+                app:cardBackgroundColor="#14255D"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/iv_product"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:backgroundTint="@color/black"
-                    android:contentDescription="@string/iv_product"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/image_12" />
-            </androidx.cardview.widget.CardView>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/name_product"
-                android:layout_width="wrap_content"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_product"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="16dp"
+                        app:cardCornerRadius="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/iv_product"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:backgroundTint="@color/black"
+                            android:contentDescription="@string/iv_product"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/image_12" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/name_product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:maxLines="2"
+                        android:text="@string/name_product"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_category"
+                        app:layout_constraintStart_toEndOf="@id/cv_product"
+                        app:layout_constraintTop_toTopOf="@id/cv_product" />
+
+                    <TextView
+                        android:id="@+id/tv_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="3dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:maxLength="25"
+                        android:text="@string/tv_category"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_price"
+                        app:layout_constraintStart_toEndOf="@id/cv_product"
+                        app:layout_constraintTop_toBottomOf="@id/name_product" />
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/tv_price"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/cv_product"
+                        app:layout_constraintTop_toBottomOf="@id/tv_category" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/view_talent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="5dp"
-                android:maxLines="2"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/name_product"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_category"
-                app:layout_constraintStart_toEndOf="@id/cv_product"
-                app:layout_constraintTop_toTopOf="@id/cv_product" />
-
-            <TextView
-                android:id="@+id/tv_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="3dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/tv_category"
-                android:textColor="@color/white"
-                android:maxLength="25"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_price"
-                app:layout_constraintStart_toEndOf="@id/cv_product"
-                app:layout_constraintTop_toBottomOf="@id/name_product" />
-
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/tv_price"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/cv_product"
-                app:layout_constraintTop_toBottomOf="@id/tv_category" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Elevated"
-        android:id="@+id/cv_detail_pemesanan"
-        android:layout_width="345dp"
-        android:layout_height="190dp"
-        android:layout_marginTop="20dp"
-        app:cardElevation="10dp"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_view_user"
-        app:strokeColor="#081639"
-        app:strokeWidth="3dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tv_detail_pemesanan"
-                android:layout_width="148dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/tv_detail_pemesanan"
-                android:textColor="#081639"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_icon_status"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_detailpayment"
-                android:contentDescription="@string/ic_status"
-                android:padding="12dp"
-                android:src="@drawable/ic_status"
-                app:layout_constraintStart_toStartOf="@id/tv_detail_pemesanan"
-                app:layout_constraintTop_toBottomOf="@id/tv_detail_pemesanan"
-                app:tint="#FFFFFF" />
-
-            <TextView
-                android:id="@+id/tv_status"
-                android:layout_width="45dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/tv_status"
-                android:textColor="#081639"
-                android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@id/iv_icon_status"
-                app:layout_constraintTop_toTopOf="@id/iv_icon_status" />
-
-            <TextView
-                android:id="@+id/tv_Ongoing"
-                android:layout_width="65dp"
-                android:layout_height="21dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/tv_ongoing"
-                android:textColor="#081639"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/iv_icon_status"
-                app:layout_constraintStart_toStartOf="@id/tv_status" />
-
-            <ImageView
-                android:id="@+id/line"
-                android:layout_width="40dp"
-                android:layout_height="25dp"
-                android:contentDescription="@string/ic_line"
-                android:src="@drawable/line_1"
-                app:layout_constraintEnd_toEndOf="@id/iv_icon_status"
-                app:layout_constraintStart_toStartOf="@id/iv_icon_status"
-                app:layout_constraintTop_toBottomOf="@id/iv_icon_status"
-                app:tint="#081639" />
-
-            <ImageView
-                android:id="@+id/iv_icon_estimasi"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/bg_detailpayment"
-                android:contentDescription="@string/ic_estimasi"
-                android:padding="10dp"
-                android:src="@drawable/ic_shipping"
-                app:layout_constraintEnd_toEndOf="@id/iv_icon_status"
-                app:layout_constraintStart_toStartOf="@id/iv_icon_status"
-                app:layout_constraintTop_toBottomOf="@id/line"
-                app:tint="#FFFFFF" />
-
-            <TextView
-                android:id="@+id/tv_estimasi"
-                android:layout_width="55dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/tv_estimasi"
-                android:textColor="#081639"
-                android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@id/iv_icon_estimasi"
-                app:layout_constraintTop_toTopOf="@id/iv_icon_estimasi" />
-
-            <TextView
-                android:id="@+id/tv_hari"
-                android:layout_width="41dp"
-                android:layout_height="21dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/tv_hari"
-                android:textColor="#081639"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/iv_icon_estimasi"
-                app:layout_constraintStart_toStartOf="@id/tv_estimasi" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Elevated"
-        android:layout_width="345dp"
-        android:layout_height="190dp"
-        android:layout_marginTop="20dp"
-        app:cardElevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/cv_detail_pemesanan"
-        app:strokeColor="#081639"
-        app:strokeWidth="3dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tv_detail_pembayaran"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/tv_detail_pembayaran"
-                android:textColor="#081639"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_jml_barang"
-                android:layout_width="95dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/jumlah_barang"
-                android:textColor="#081639"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_detail_pembayaran"
-                app:layout_constraintTop_toBottomOf="@+id/tv_detail_pembayaran" />
-
-            <TextView
-                android:id="@+id/tv_barang"
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/tv_barang"
-                android:textColor="#081639"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_jml_barang"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:backgroundTint="@color/dark_navy"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_jml_barang" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_view_user">
 
-            <TextView
-                android:id="@+id/tv_harga"
-                android:layout_width="38dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/tv_harga"
-                android:textColor="#081639"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_jml_barang"
-                app:layout_constraintTop_toBottomOf="@+id/tv_jml_barang" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fourthLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true">
 
-            <TextView
-                android:id="@+id/tv_harga_barang"
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/tv_price"
-                android:textColor="#081639"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_harga"
-                app:layout_constraintEnd_toEndOf="@id/tv_barang"
-                app:layout_constraintTop_toTopOf="@+id/tv_harga" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardview7"
+                        android:layout_width="94dp"
+                        android:layout_height="94dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:backgroundTint="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="3dp">
 
-            <TextView
-                android:id="@+id/tv_diskon"
-                android:layout_width="40dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/tv_disk"
-                android:textColor="#081639"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_harga"
-                app:layout_constraintTop_toBottomOf="@+id/tv_harga" />
+                        <ImageView
+                            android:id="@+id/iv_talent_photo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ilustrator"
+                            tools:src="@tools:sample/avatars" />
+                    </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/tv_diskon_barang"
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/tv_diskon"
-                android:textColor="#081639"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_diskon"
-                app:layout_constraintEnd_toEndOf="@id/tv_harga_barang"
-                app:layout_constraintTop_toTopOf="@+id/tv_diskon" />
+                    <TextView
+                        android:id="@+id/tv_ilustrator_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Khidir Karawita"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/cardview7"
+                        app:layout_constraintTop_toTopOf="@id/cardview7" />
 
-            <View
-                android:id="@+id/line_detailpembayaran"
-                android:layout_width="308dp"
-                android:layout_height="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/line_detailpemesanan"
-                android:backgroundTint="#081639"
-                app:layout_constraintEnd_toEndOf="@+id/tv_diskon_barang"
-                app:layout_constraintStart_toStartOf="@+id/tv_diskon"
-                app:layout_constraintTop_toBottomOf="@+id/tv_diskon" />
+                    <TextView
+                        android:id="@+id/tv_ilustrator_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:maxLines="4"
+                        android:text="@string/detail_description"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_ilustrator_name"
+                        app:layout_constraintTop_toBottomOf="@id/tv_ilustrator_name" />
 
-            <TextView
-                android:id="@+id/tv_total"
-                android:layout_width="36dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/tv_total"
-                android:textColor="#081639"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/line_detailpembayaran"
-                app:layout_constraintTop_toBottomOf="@+id/line_detailpembayaran" />
+                    <TextView
+                        android:id="@+id/tv_rate_title_ilustrator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Rate :"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/tv_ilustrator_desc"
+                        app:layout_constraintTop_toBottomOf="@id/tv_ilustrator_desc" />
 
-            <TextView
-                android:layout_width="94dp"
-                android:layout_height="20dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/tv_price"
-                android:textColor="#081639"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_total"
-                app:layout_constraintEnd_toEndOf="@id/line_detailpembayaran"
-                app:layout_constraintTop_toTopOf="@id/tv_total" />
+                    <ImageView
+                        android:id="@+id/iv_star_ilustrator"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/ic_star"
+                        app:layout_constraintBottom_toBottomOf="@id/cardview7"
+                        app:layout_constraintStart_toEndOf="@id/cardview7"
+                        app:layout_constraintTop_toTopOf="@id/tv_rate_title_ilustrator"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/tv_rate_ilustrator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="4.0 (1k Reviewer)"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_star_ilustrator"
+                        app:layout_constraintStart_toEndOf="@id/iv_star_ilustrator"
+                        app:layout_constraintTop_toTopOf="@id/iv_star_ilustrator" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_detail_pemesanan"
+                style="@style/Widget.Material3.CardView.Elevated"
+                android:layout_width="345dp"
+                android:layout_height="290dp"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_talent"
+                app:strokeColor="#081639"
+                app:strokeWidth="3dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_detail_pemesanan"
+                        android:layout_width="148dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_detail_pemesanan"
+                        android:textColor="#081639"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/tv_tanggal_pemesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/tv_tanggal_pemesanan"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_pemesanan" />
+
+                    <TextView
+                        android:id="@+id/tv_tanggal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_tanggal"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_pemesanan" />
+
+
+                    <TextView
+                        android:id="@+id/tv_email_customer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/tv_email_customer"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_tanggal_pemesanan" />
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_email"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_tanggal_pemesanan" />
+
+
+                    <TextView
+                        android:id="@+id/tv_text_id_transaksi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/tv_id_transaksi"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_email_customer" />
+
+                    <TextView
+                        android:id="@+id/tv_id_transaksi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_id"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_text_id_transaksi" />
+
+                    <TextView
+                        android:id="@+id/tv_metode_pembayaran"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/tv_metode_pembayaran"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_id_transaksi" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_method"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_metode"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_id_transaksi" />
+
+
+                    <TextView
+                        android:id="@+id/tv_note"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/tv_note"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_metode_pembayaran" />
+
+                    <TextView
+                        android:id="@+id/tv_note_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_note_detail"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_note" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/view_metode_pembayaran"
+                style="@style/Widget.Material3.CardView.Elevated"
+                android:layout_width="345dp"
+                android:layout_height="190dp"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_detail_pemesanan"
+                app:strokeColor="#081639"
+                app:strokeWidth="3dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_detail_pembayaran"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_detail_pembayaran"
+                        android:textColor="#081639"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_jml_barang"
+                        android:layout_width="95dp"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/jumlah_barang"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_detail_pembayaran"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_pembayaran" />
+
+                    <TextView
+                        android:id="@+id/tv_barang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_barang"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_jml_barang"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_jml_barang" />
+
+                    <TextView
+                        android:id="@+id/tv_harga"
+                        android:layout_width="38dp"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/tv_harga"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_jml_barang"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_jml_barang" />
+
+                    <TextView
+                        android:id="@+id/tv_harga_barang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_price"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_harga"
+                        app:layout_constraintEnd_toEndOf="@id/tv_barang"
+                        app:layout_constraintTop_toTopOf="@+id/tv_harga" />
+
+                    <TextView
+                        android:id="@+id/tv_diskon"
+                        android:layout_width="40dp"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/tv_disk"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_harga"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_harga" />
+
+                    <TextView
+                        android:id="@+id/tv_diskon_barang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_diskon"
+                        android:textColor="#081639"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_diskon"
+                        app:layout_constraintEnd_toEndOf="@id/tv_harga_barang"
+                        app:layout_constraintTop_toTopOf="@+id/tv_diskon" />
+
+                    <View
+                        android:id="@+id/line_detailpembayaran"
+                        android:layout_width="308dp"
+                        android:layout_height="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line_detailpemesanan"
+                        android:backgroundTint="#081639"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_diskon_barang"
+                        app:layout_constraintStart_toStartOf="@+id/tv_diskon"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_diskon" />
+
+                    <TextView
+                        android:id="@+id/tv_total"
+                        android:layout_width="36dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_total"
+                        android:textColor="#081639"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@+id/line_detailpembayaran"
+                        app:layout_constraintTop_toBottomOf="@+id/line_detailpembayaran" />
+
+                    <TextView
+                        android:id="@+id/tv_total_harga"
+                        android:layout_width="94dp"
+                        android:layout_height="20dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/tv_price"
+                        android:textColor="#081639"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_total"
+                        app:layout_constraintEnd_toEndOf="@id/line_detailpembayaran"
+                        app:layout_constraintTop_toTopOf="@id/tv_total" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btn_done"
+                android:layout_width="345dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="80dp"
+                android:backgroundTint="#279EFF"
+                android:fontFamily="@font/ubuntu_medium"
+                android:text="@string/btn_selesai"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_metode_pembayaran"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
