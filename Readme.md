@@ -27,5 +27,5 @@ git clone git@github.com:JasaKarya/Mobile-Development.git
 
 Navigate to the project directory:
 ```bash
-'cd Mobile-Development'
+cd Mobile-Development
 ```
