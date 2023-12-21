@@ -157,7 +157,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fourthLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -248,31 +248,6 @@
             app:layout_constraintStart_toEndOf="@id/iv_star_ilustrator"
             app:layout_constraintTop_toTopOf="@id/iv_star_ilustrator"
             app:layout_constraintBottom_toBottomOf="@id/iv_star_ilustrator"/>
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_another_title_ilustrator"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="4dp"-->
-<!--            android:layout_marginStart="100dp"-->
-<!--            android:text="Produk lain:"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="8sp"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintStart_toStartOf="@id/tv_ilustrator_desc"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tv_ilustrator_desc" />-->
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rv_stacked_profile"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_marginBottom="8dp"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tv_another_title_ilustrator"-->
-<!--            app:layout_constraintStart_toStartOf="@id/tv_another_title_ilustrator"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/iv_star_ilustrator"-->
-<!--            tools:listitem="@layout/item_stacked_profile"/>-->
         
     </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

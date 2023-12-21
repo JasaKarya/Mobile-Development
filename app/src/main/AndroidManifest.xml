@@ -14,8 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JasaKarya"
         tools:targetApi="31">
-        <activity android:name=".ui.payment.MethodPaymentActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".ui.payment.TransactionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.payment.MethodPaymentActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
@@ -23,7 +27,7 @@
             android:name=".ui.cart.ReviewActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.cart.DetailStatusActivity"
+            android:name=".ui.payment.DetailStatusActivity"
             android:exported="false" />
         <activity
             android:name=".ui.cart.StatusPembelianActivity"

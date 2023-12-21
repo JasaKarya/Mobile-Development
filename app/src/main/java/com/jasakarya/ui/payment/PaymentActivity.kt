@@ -29,10 +29,13 @@ class PaymentActivity : AppCompatActivity() {
         val selectedPrice = intent.getIntExtra("selectedPrice", 0)
         val note = intent.getStringExtra("note")
         val contentName = intent.getStringExtra("contentName")
+        val imgUrl = intent.getStringExtra("imgUrl")
+
+        val cartId = intent.getStringExtra("cartId")
 
         binding.apply{
             Glide.with(this@PaymentActivity)
-                .load(intent.getStringExtra("imgUrl"))
+                .load(imgUrl)
                 .into(ivProduct)
             nameProduct.text = contentName
             tvCategory.text = selectedPackage
@@ -42,7 +45,7 @@ class PaymentActivity : AppCompatActivity() {
             tvTotalHarga.text = "Rp. $selectedPrice"
         }
 
-        binding.ibBack.setOnClickListener { finish() }
+        viewModel.getTalent(contentId)
 
         binding.btnPay.setOnClickListener {
             val intent = Intent(this, MethodPaymentActivity::class.java)
@@ -51,6 +54,8 @@ class PaymentActivity : AppCompatActivity() {
             intent.putExtra("selectedPrice", selectedPrice)
             intent.putExtra("note", note)
             intent.putExtra("contentName", contentName)
+            intent.putExtra("imgUrl", imgUrl)
+            intent.putExtra("cartId", cartId)
             startActivity(intent)
         }
 

@@ -17,6 +17,7 @@ import com.jasakarya.data.model.Biodata
 import com.jasakarya.data.model.Cart
 import com.jasakarya.data.model.Content
 import com.jasakarya.data.model.Talent
+import com.jasakarya.data.model.Transaction
 import com.jasakarya.data.model.User
 import com.jasakarya.data.source.remote.ApiServices
 
@@ -50,6 +51,12 @@ class Repository (private val apiServices: ApiServices, private val context: Con
     val userLiveData = MutableLiveData<User?>()
 
     val updatePreferredCategoriesStatus = MutableLiveData<Boolean>()
+
+    val addTransactionSuccessLiveData = MutableLiveData<Boolean>()
+
+    val transactionsLiveData = MutableLiveData<List<Transaction>>()
+
+    val transactionLiveData = MutableLiveData<Transaction?>()
 
 
 
@@ -170,13 +177,62 @@ class Repository (private val apiServices: ApiServices, private val context: Con
                 snapshot.children.forEach { talentSnapshot ->
                     val content = talentSnapshot.child("content").getValue(Content::class.java)
                     content?.let {
-                        if (it.categories.filterKeys { key -> categories.contains(key) }.all { (_, value) -> value == 1 }
+                        if (it.categories.filterKeys { key -> categories.contains(key) }.any { (_, value) -> value == 1 }
                             && it.rating >= minRating) {
                             filteredContents.add(it)
                         }
                     }
                 }
                 contentsLiveData.postValue(filteredContents.sortedByDescending { it.rating }.take(limit))
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                contentsLiveData.postValue(null)
+            }
+        })
+    }
+
+    suspend fun fetchAllContentsSortedByRating(limit: Int) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("talents")
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val allContents = mutableListOf<Content>()
+                snapshot.children.forEach { talentSnapshot ->
+                    val content = talentSnapshot.child("content").getValue(Content::class.java)
+                    content?.let {
+                        allContents.add(it)
+                    }
+                }
+                // Sort the contents by rating in descending order
+                val sortedContents = allContents.sortedByDescending { it.rating }
+                // Take the first 'limit' number of contents
+                val limitedContents = sortedContents.take(limit)
+                contentsLiveData.postValue(limitedContents)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                contentsLiveData.postValue(null)
+            }
+        })
+    }
+
+    suspend fun searchContentsByQuery(query: String, limit: Int) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("talents")
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val matchingContents = mutableListOf<Content>()
+                snapshot.children.forEach { talentSnapshot ->
+                    val content = talentSnapshot.child("content").getValue(Content::class.java)
+                    content?.let {
+                        // Check if the 'content_name' contains the search query (case-insensitive)
+                        if (it.content_name.contains(query, ignoreCase = true)) {
+                            matchingContents.add(it)
+                        }
+                    }
+                }
+                // Take the first 'limit' number of matching contents
+                val limitedContents = matchingContents.take(limit)
+                contentsLiveData.postValue(limitedContents)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -270,14 +326,31 @@ class Repository (private val apiServices: ApiServices, private val context: Con
     }
 
     suspend fun deleteCartByCartId(cartId: String) {
-        val databaseReference = FirebaseDatabase.getInstance().getReference("carts").child(cartId)
-        databaseReference.removeValue()
-            .addOnSuccessListener {
-                cartDeleteSuccessLiveData.postValue(true)
-            }
-            .addOnFailureListener {
-                cartDeleteSuccessLiveData.postValue(false)
-            }
+        val databaseReference = FirebaseDatabase.getInstance().getReference("carts")
+
+        databaseReference.orderByChild("cartId").equalTo(cartId)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        for (cartSnapshot in snapshot.children) {
+                            cartSnapshot.ref.removeValue()
+                                .addOnSuccessListener {
+                                    cartDeleteSuccessLiveData.postValue(true)
+                                }
+                                .addOnFailureListener {
+                                    cartDeleteSuccessLiveData.postValue(false)
+                                }
+                        }
+                    } else {
+                        // No matching cart found
+                        cartDeleteSuccessLiveData.postValue(false)
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    cartDeleteSuccessLiveData.postValue(false)
+                }
+            })
     }
 
     fun fetchUserByEmail(userEmail: String) {
@@ -342,6 +415,52 @@ class Repository (private val apiServices: ApiServices, private val context: Con
                 }
             })
     }
+
+    suspend fun createTransaction(transaction: Transaction) {
+        database.child("transactions").push().setValue(transaction)
+            .addOnSuccessListener { addTransactionSuccessLiveData.postValue(true) }
+            .addOnFailureListener {
+                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                addTransactionSuccessLiveData.postValue(false) }
+    }
+
+    suspend fun fetchTransactionsByUserEmail(userEmail: String) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("transactions")
+        databaseReference.orderByChild("useremail").equalTo(userEmail)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val transactions = dataSnapshot.children.mapNotNull { it.getValue(Transaction::class.java) }
+                    transactionsLiveData.postValue(transactions)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    transactionsLiveData.postValue(emptyList())
+                }
+            })
+    }
+
+    suspend fun fetchTransactionByTransactionId(transactionId: String) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("transactions")
+        databaseReference.orderByChild("transactionId").equalTo(transactionId)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+
+                        val transaction = dataSnapshot.children.first().getValue(Transaction::class.java)
+                        transactionLiveData.postValue(transaction)
+                    } else {
+
+                        transactionLiveData.postValue(null)
+                        Toast.makeText(context, "Transaksi tidak ditemukan", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    transactionLiveData.postValue(null)
+                }
+            })
+    }
+
 
 
 

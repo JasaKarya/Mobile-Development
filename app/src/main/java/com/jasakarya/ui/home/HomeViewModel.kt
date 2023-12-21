@@ -32,6 +32,18 @@ class HomeViewModel(private val repository: Repository): ViewModel(){
         }
     }
 
+    fun searchContents(query: String, limit: Int) {
+        viewModelScope.launch {
+            repository.searchContentsByQuery(query, limit)
+        }
+    }
+
+    fun getSortedContents(limit:Int){
+        viewModelScope.launch {
+            repository.fetchAllContentsSortedByRating(limit)
+        }
+    }
+
     fun getTalents(limit: Int) {
         viewModelScope.launch {
             repository.fetchTalents(limit)
