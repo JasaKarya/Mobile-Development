@@ -11,7 +11,7 @@
 - Abstract the data sources from the rest of the application using Repository.
 - [Retrofit](https://square.github.io/retrofit/) to make requests to server APIs and handle their responses.
 - Manage image processing, caching, and handle various image formats using [Glide](https://github.com/bumptech/glide).
-- Dependency injection using .
+- Dependency injection.
 
 ## Screenshots
 ![Screenshot](https://github.com/JasaKarya/Mobile-Development/assets/89442208/98d9ffb5-6e94-4676-91bf-01e4a984a6ab)
@@ -32,3 +32,5 @@ Navigate to the project directory:
 ```bash
 cd Mobile-Development
 ```
+
+Finally, open the JasaKarya directory in Android Studio.
