@@ -5,7 +5,9 @@
 ### Architecture
 
 - **XML** to specify the layout of activities or parts of the user interface (UI).
+- Appealing design system with pre-designed UI using [Material3](https://m3.material.io/).
 - Using [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) to store and manage UI-related data.
+- A cloud-hosted NoSQL database that enables real-time data using [Firebase](https://firebase.google.com/products/realtime-database?hl=id).
 - Abstract the data sources from the rest of the application using Repository.
 - [Retrofit](https://square.github.io/retrofit/) to make requests to server APIs and handle their responses.
 - Manage image processing, caching, and handle various image formats using [Glide](https://github.com/bumptech/glide).
